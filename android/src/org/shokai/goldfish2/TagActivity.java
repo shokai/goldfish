@@ -14,7 +14,7 @@ import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.*;
-import android.webkit.WebView;
+import android.webkit.*;
 import android.widget.*;
 
 public class TagActivity extends Activity {
@@ -22,7 +22,7 @@ public class TagActivity extends Activity {
     private TextView textViewTag;
     private WebView webView;
     private String tag_id = null;
-    private String url = "http://dev.shokai.org/g/tag/";
+    private String url = "http://192.168.1.38:8280/tag/";
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,12 @@ public class TagActivity extends Activity {
         textViewTag.setText("please touch NFC tag");
         this.webView = (WebView)findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.setWebChromeClient(new WebChromeClient() {
+            public boolean onConsoleMessage(ConsoleMessage cm){
+                trace(cm.message()+" -- line:"+cm.lineNumber()+" of "+cm.sourceId());
+                return true;
+            }
+        });
         resolveIntent(this.getIntent());
     }
     

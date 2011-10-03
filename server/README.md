@@ -1,25 +1,32 @@
-player
-======
+goldfish2 server
+================
+
+Dependencies
+------------
+
+* Ruby 1.8.7
+* MongoDB 2.0+
 
 Install Dependencies
 --------------------
 
-    % gem install sinatra thin sinatra-reloader json haml bundler mongoid bson bson_ext
-
-
-or
-
-
-    % gem install bundler
     % bundle install
-    
+
+
+Config
+------
+
+    % cp sample.config.yaml config.yaml
+
+edit "config.yaml".
+
 
 Run
 ---
 
     % ruby development.ru
 
-open [http://localhost:8125](http://localhost:8125)
+open [http://localhost:8280](http://localhost:8280)
 
 
 Deploy

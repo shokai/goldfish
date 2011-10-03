@@ -1,17 +1,16 @@
 GoldFish
 ========
 
+Clone this Repository
+---------------------
+
+    % git clone git://github.com/shokai/goldfish2.git
+
 System Requirements
 -------------------
 
 * Android 2.3.1+
 * NFC
-
-
-Clone this Repository
----------------------
-
-    % git clone git://github.com/shokai/goldfish2.git
 
 
 Build and Install Android

@@ -1,0 +1,14 @@
+*.log
+*~
+.DS_Store
+db/*
+db*
+bin
+*.lock
+build.xml
+local.properties
+*.keystore
+*.pem
+.bundle
+config.yaml
+package

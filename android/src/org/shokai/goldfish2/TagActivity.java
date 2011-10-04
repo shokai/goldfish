@@ -23,6 +23,7 @@ public class TagActivity extends Activity {
     private WebView webView;
     private String tag_id = null;
     private String url = "http://192.168.1.38:8280/tag/";
+    private JsObject jsObj;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,14 +33,19 @@ public class TagActivity extends Activity {
         
         this.textViewTag = (TextView)findViewById(R.id.textViewTag);
         textViewTag.setText("please touch NFC tag");
+        
         this.webView = (WebView)findViewById(R.id.webView);
-        webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebChromeClient(new WebChromeClient() {
             public boolean onConsoleMessage(ConsoleMessage cm){
                 trace(cm.message()+" -- line:"+cm.lineNumber()+" of "+cm.sourceId());
                 return true;
             }
         });
+        webView.clearCache(true);
+        webView.getSettings().setJavaScriptEnabled(true);
+        this.jsObj = new JsObject(this);
+        webView.addJavascriptInterface(jsObj, "device");
+        
         resolveIntent(this.getIntent());
     }
     

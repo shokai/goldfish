@@ -7,6 +7,14 @@ System Requirements
 * Android 2.3.1+
 * NFC
 
+Config
+======
+
+Set Base URL
+------------
+
+edit *base_url* in "android/res/values/string.xml".
+
 
 Build and Install Android App
 =============================

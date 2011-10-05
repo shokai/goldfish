@@ -18,12 +18,13 @@ import android.widget.*;
 public class TagActivity extends Activity {
     private WebView webView;
     private String tag_id = null;
-    //private String url = "http://192.168.1.38:8280/tag/";
-    private String url = "http://3memo.com/gynamic/";
+    private String base_url;
     private JsObject jsObj;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        this.base_url = this.getResources().getString(R.string.base_url);
+        
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tag);
         trace("start");
@@ -70,7 +71,7 @@ public class TagActivity extends Activity {
             String id = sb.toString();
             this.tag_id = id;
             notify("TAG:"+tag_id);
-            this.webView.loadUrl(url+tag_id);
+            this.webView.loadUrl(base_url+tag_id);
         }
         catch (Exception e) {
             e.printStackTrace();

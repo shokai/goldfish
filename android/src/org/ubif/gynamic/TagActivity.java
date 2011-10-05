@@ -28,7 +28,7 @@ public class TagActivity extends Activity {
         
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tag);
-        trace("start");
+        trace("TagActivity start");
         
         this.webView = (WebView)findViewById(R.id.webView);
         webView.setWebChromeClient(new WebChromeClient() {
@@ -59,20 +59,25 @@ public class TagActivity extends Activity {
         String action = intent.getAction();
         trace(action);
         try {
-            Parcelable tag = intent.getParcelableExtra("android.nfc.extra.TAG");
-            Field f = tag.getClass().getDeclaredField("mId");
-            f.setAccessible(true);
-            byte[] mId = (byte[]) f.get(tag);
-            StringBuilder sb = new StringBuilder();
-            for (byte id : mId) {
-                String hexString = Integer.toHexString(UnsignedBytes.toInt(id));
-                if (hexString.length() == 1) sb.append("0");
-                sb.append(hexString);
+            if (action.equals(NfcAdapter.ACTION_TAG_DISCOVERED)) {
+                Parcelable tag = intent.getParcelableExtra("android.nfc.extra.TAG");
+                Field f = tag.getClass().getDeclaredField("mId");
+                f.setAccessible(true);
+                byte[] mId = (byte[]) f.get(tag);
+                StringBuilder sb = new StringBuilder();
+                for (byte id : mId) {
+                    String hexString = Integer.toHexString(UnsignedBytes.toInt(id));
+                    if (hexString.length() == 1) sb.append("0");
+                    sb.append(hexString);
+                }
+                String id = sb.toString();
+                this.tag_id = id;
             }
-            String id = sb.toString();
-            this.tag_id = id;
-            notify("TAG:"+tag_id);
-            this.webView.loadUrl(base_url+tag_id);
+            else if(action.equals(Action.ACTION_MAIN)){
+                this.tag_id = intent.getExtras().getString("tag_id");
+            }
+            notify("TAG:" + tag_id);
+            this.webView.loadUrl(base_url + tag_id);
         }
         catch (Exception e) {
             e.printStackTrace();

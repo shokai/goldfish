@@ -2,11 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    />
+    android:layout_height="fill_parent">
+    <LinearLayout android:layout_width="match_parent"
+                  android:id="@+id/linearLayout1"
+                  android:layout_height="wrap_content">
+        <EditText android:layout_weight="1"
+                  android:layout_width="match_parent"
+                  android:id="@+id/editTextTag"
+                  android:layout_height="wrap_content" />
+        <Button android:id="@+id/buttonOpenTag"
+                android:text="GO"
+                android:layout_height="wrap_content"
+                android:layout_width="66dp" />
+    </LinearLayout>
 </LinearLayout>

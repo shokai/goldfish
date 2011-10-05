@@ -29,7 +29,7 @@ With AndroidSDK
 ----------------
 
     % cd android
-    % android update project --path `pwd` --name 'gynamic'
-    % ant debug
-    % adb install -r bin/gynamic-debug.apk
+    % make setup
+    % make
+    % make install
 

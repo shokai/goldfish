@@ -1,5 +1,7 @@
 all:
 	ant debug
+setup:
+	android update project --path `pwd` --name 'gynamic'
 install:
 	adb install -r bin/gynamic-debug.apk
 uninstall:

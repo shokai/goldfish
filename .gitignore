@@ -5,10 +5,10 @@ db/*
 db*
 bin
 *.lock
-build.xml
-local.properties
 *.keystore
 *.pem
 .bundle
 config.yaml
 package
+# build.xml
+# local.properties

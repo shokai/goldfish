@@ -10,5 +10,5 @@ bin
 .bundle
 config.yaml
 package
-# build.xml
-# local.properties
+build.xml
+local.properties

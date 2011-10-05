@@ -16,8 +16,6 @@ import android.webkit.*;
 import android.widget.*;
 
 public class TagActivity extends Activity {
-
-    private TextView textViewTag;
     private WebView webView;
     private String tag_id = null;
     //private String url = "http://192.168.1.38:8280/tag/";
@@ -29,9 +27,6 @@ public class TagActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tag);
         trace("start");
-        
-        this.textViewTag = (TextView)findViewById(R.id.textViewTag);
-        textViewTag.setText("please touch NFC tag");
         
         this.webView = (WebView)findViewById(R.id.webView);
         webView.setWebChromeClient(new WebChromeClient() {
@@ -74,13 +69,11 @@ public class TagActivity extends Activity {
             }
             String id = sb.toString();
             this.tag_id = id;
-            textViewTag.setText("TAG : " + tag_id);
-            trace(tag_id);
+            notify("TAG:"+tag_id);
             this.webView.loadUrl(url+tag_id);
         }
         catch (Exception e) {
             e.printStackTrace();
-             textViewTag.setText("TAG error");
         }
         
     }
@@ -88,4 +81,9 @@ public class TagActivity extends Activity {
     void trace(Object msg) {
         Log.v(this.getResources().getString(R.string.app_name), msg.toString());
     }
+    void notify(Object msg){
+        this.setTitle(this.getResources().getString(R.string.app_name)+" - "+msg.toString());
+        trace(msg);
+    }
+    
 }

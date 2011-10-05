@@ -4,6 +4,7 @@ require 'rack'
 require 'sinatra/reloader' if development?
 require 'mongoid'
 require File.dirname(__FILE__)+'/models/nfctag'
+require 'haml'
 require 'yaml'
 require 'json'
 

@@ -1,4 +1,4 @@
 $(function(){
-      console.log("start - tag:"+tag);
+      console.log("start - tag:"+device.tag());
       alert("app_name:"+device.app_name());
   });

@@ -18,6 +18,7 @@ import android.widget.*;
 public class TagActivity extends Activity {
     private WebView webView;
     private String tag_id = null;
+    public String getTagId(){ return this.tag_id; }
     private String base_url;
     private JsObject jsObj;
     

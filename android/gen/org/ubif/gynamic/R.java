@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package org.shokai.goldfish2;
+package org.ubif.gynamic;
 
 public final class R {
     public static final class attr {

@@ -1,4 +1,4 @@
-package org.shokai.goldfish2;
+package org.ubif.gynamic;
 
 import android.app.Activity;
 import android.os.Bundle;

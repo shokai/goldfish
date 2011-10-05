@@ -1,5 +1,5 @@
 before do
-  @title = 'goldfish'
+  @title = 'gynamic'
 end
 
 get '/' do

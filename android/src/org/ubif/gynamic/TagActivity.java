@@ -1,10 +1,8 @@
-package org.shokai.goldfish2;
+package org.ubif.gynamic;
 
 import java.lang.reflect.Field;
 import java.util.*;
 import java.util.regex.*;
-
-import org.shokai.goldfish2.R;
 
 import com.google.common.primitives.UnsignedBytes;
 
@@ -22,7 +20,8 @@ public class TagActivity extends Activity {
     private TextView textViewTag;
     private WebView webView;
     private String tag_id = null;
-    private String url = "http://192.168.1.38:8280/tag/";
+    //private String url = "http://192.168.1.38:8280/tag/";
+    private String url = "http://3memo.com/gynamic/";
     private JsObject jsObj;
     
     @Override

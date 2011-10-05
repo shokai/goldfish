@@ -1,11 +1,12 @@
-goldfish2 server
-================
+gynamic server
+==============
 
 Dependencies
 ------------
 
 * Ruby 1.8.7
 * MongoDB 2.0+
+* Sinatra 1.3+
 
 Install Dependencies
 --------------------

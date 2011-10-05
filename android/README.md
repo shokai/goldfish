@@ -8,10 +8,10 @@ System Requirements
 * NFC
 
 
-Build and Install Android
-=========================
+Build and Install Android App
+=============================
 
-With ECLIPSE
+With Eclipse
 ------------
 
 Import "android" directory into your eclipse workspace and build it.

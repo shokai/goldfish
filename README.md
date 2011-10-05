@@ -9,7 +9,7 @@ Clone this Repository
 System Requirements
 -------------------
 
-* Android 2.3.1+
+* Android 2.3.3+
 * NFC
 * Ruby 1.8.7
 * MongoDB 2.0+

@@ -39,6 +39,15 @@ public class TagActivity extends Activity {
                 trace(cm.message()+" -- line:"+cm.lineNumber()+" of "+cm.sourceId());
                 return true;
             }
+            
+        });
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                trace("WebView.loadUrl : "+url);
+                view.loadUrl(url);
+                return true;
+            }
         });
         webView.clearCache(true);
         webView.getSettings().setJavaScriptEnabled(true);

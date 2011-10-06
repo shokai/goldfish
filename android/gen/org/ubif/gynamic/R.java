@@ -17,6 +17,8 @@ public final class R {
         public static final int buttonOpenTag=0x7f050002;
         public static final int editTextTag=0x7f050001;
         public static final int linearLayout1=0x7f050000;
+        public static final int progressBar=0x7f050005;
+        public static final int progressBarWrapper=0x7f050004;
         public static final int webView=0x7f050003;
     }
     public static final class layout {

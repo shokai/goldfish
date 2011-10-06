@@ -12,6 +12,7 @@ import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.*;
+import android.view.View;
 import android.webkit.*;
 import android.widget.*;
 
@@ -30,13 +31,20 @@ public class TagActivity extends Activity {
         setContentView(R.layout.tag);
         trace("TagActivity start");
         
+        final TagActivity that = this;
         this.webView = (WebView)findViewById(R.id.webView);
         webView.setWebChromeClient(new WebChromeClient() {
             public boolean onConsoleMessage(ConsoleMessage cm){
                 trace(cm.message()+" -- line:"+cm.lineNumber()+" of "+cm.sourceId());
                 return true;
             }
-            
+            public void onProgressChanged(WebView view, int count) {
+                android.view.View progBarWrapper = that.findViewById(R.id.progressBarWrapper);
+                ProgressBar bar = (ProgressBar)that.findViewById(R.id.progressBar);
+                bar.setProgress(count);
+                if(count >= 100) progBarWrapper.setVisibility(View.GONE);
+                else progBarWrapper.setVisibility(View.VISIBLE);
+            }            
         });
         webView.setWebViewClient(new WebViewClient() {
             @Override

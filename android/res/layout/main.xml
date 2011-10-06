@@ -9,7 +9,7 @@
         <EditText android:layout_weight="1"
                   android:layout_width="match_parent"
                   android:id="@+id/editTextTag"
-                  android:layout_height="wrap_content" />
+                  android:layout_height="wrap_content" android:inputType="number"/>
         <Button android:id="@+id/buttonOpenTag"
                 android:text="GO"
                 android:layout_height="wrap_content"

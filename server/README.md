@@ -27,7 +27,7 @@ Run
 
     % ruby development.ru
 
-open [http://localhost:8280](http://localhost:8280)
+open [http://localhost:8080](http://localhost:8080)
 
 
 Deploy

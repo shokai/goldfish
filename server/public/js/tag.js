@@ -1,4 +1,4 @@
 $(function(){
-      console.log("start - tag:"+device.tag());
-      alert("app_name:"+device.app_name());
+      console.log("start - tag:"+gynamic.tag());
+      alert("app_name:"+gynamic.app_name());
   });

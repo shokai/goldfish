@@ -11,7 +11,13 @@ $(function(){
       setInterval(
           function(){
               var acc = gynamic.accelerometer();
-              $('#accelerometer').html('x:'+acc.x+',y:'+acc.y+',z:'+acc.z);
+              $('#accelerometer .x .value').html(acc.x);
+              $('#accelerometer .y .value').html(acc.y);
+              $('#accelerometer .z .value').html(acc.z);
+              var gyro = gynamic.gyroscope();
+              $('#gyroscope .x .value').html(gyro.x);
+              $('#gyroscope .y .value').html(gyro.y);
+              $('#gyroscope .z .value').html(gyro.z);
           }, 50
       );
   }

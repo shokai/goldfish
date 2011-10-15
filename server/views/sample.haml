@@ -9,5 +9,34 @@
     %script{:type => 'application/javascript', :src => "#{app_root}/js/sample.js"}
   %body
     %h1= "#{@title} sample"
-    %div#accelerometer
+    %h2 Sensors
+    %h3 Accelerometer
+    %ul#accelerometer
+      %li.x
+        %span.label x
+        %span :
+        %span.value 0
+      %li.y
+        %span.label y
+        %span :
+        %span.value 0
+      %li.z
+        %span.label z
+        %span :
+        %span.value 0
+    %h3 Gyroscope
+    %ul#gyroscope
+      %li.x
+        %span.label x
+        %span :
+        %span.value 0
+      %li.y
+        %span.label y
+        %span :
+        %span.value 0
+      %li.z
+        %span.label z
+        %span :
+        %span.value 0
+    %h2 Log
     %ul#log

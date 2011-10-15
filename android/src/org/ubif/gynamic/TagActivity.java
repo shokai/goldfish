@@ -8,6 +8,8 @@ import com.google.common.primitives.UnsignedBytes;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.hardware.*;
+import android.net.Uri;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -22,6 +24,8 @@ public class TagActivity extends Activity {
     public String getTagId(){ return this.tag_id; }
     private String base_url;
     private JsObject jsObj;
+    private SensorManager sm;
+    private SensorListener sl;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,7 +61,10 @@ public class TagActivity extends Activity {
         webView.clearCache(true);
         webView.getSettings().setJavaScriptEnabled(true);
         this.jsObj = new JsObject(this);
-        webView.addJavascriptInterface(jsObj, "device");
+        webView.addJavascriptInterface(jsObj, "gynamic");
+        
+        this.sm = (SensorManager) this.getSystemService(SENSOR_SERVICE);
+        this.sl = new SensorListener(this.jsObj);
         
         resolveIntent(this.getIntent());
     }
@@ -99,6 +106,23 @@ public class TagActivity extends Activity {
     void notify(Object msg){
         this.setTitle(this.getResources().getString(R.string.app_name)+" - "+msg.toString());
         trace(msg);
+    }
+    
+    @Override
+    protected void onResume() {
+        super.onResume();
+        List<Sensor> sensors = sm.getSensorList(Sensor.TYPE_ACCELEROMETER);
+        if (sensors.size() > 0) {
+            Sensor sensor = sensors.get(0);
+            sm.registerListener(this.sl, sensor, SensorManager.SENSOR_DELAY_FASTEST);
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        sm.unregisterListener(this.sl);
+        finish();
+        super.onStop();
     }
     
 }

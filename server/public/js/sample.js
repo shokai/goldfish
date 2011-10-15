@@ -12,7 +12,7 @@ $(function(){
           function(){
               var acc = gynamic.accelerometer();
               $('#accelerometer').html('x:'+acc.x+',y:'+acc.y+',z:'+acc.z);
-          }, 500
+          }, 50
       );
   }
  );

@@ -111,10 +111,13 @@ public class TagActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        List<Sensor> sensors = sm.getSensorList(Sensor.TYPE_ACCELEROMETER);
-        if (sensors.size() > 0) {
-            Sensor sensor = sensors.get(0);
-            sm.registerListener(this.sl, sensor, SensorManager.SENSOR_DELAY_FASTEST);
+        int[] arr = {Sensor.TYPE_ACCELEROMETER, Sensor.TYPE_GYROSCOPE};
+        for(int i = 0; i < arr.length; i++){
+            int type = arr[i];
+            List<Sensor> sensors = sm.getSensorList(type);
+            if(sensors.size() > 0){
+                sm.registerListener(this.sl, sensors.get(0), SensorManager.SENSOR_DELAY_FASTEST);
+            }
         }
     }
 

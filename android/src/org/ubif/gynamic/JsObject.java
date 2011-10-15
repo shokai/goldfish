@@ -15,11 +15,22 @@ public class JsObject {
         this.accY = y;
         this.accZ = z;
     }
-    
     public String _accelerometer(){
         return "{\"x\":" + Float.toString(this.accX) +
                ",\"y\":" + Float.toString(this.accY) +
                ",\"z\":" + Float.toString(this.accZ) + "}";
+    }
+
+    private float gyroX, gyroY, gyroZ;
+    public void setGyroscope(float x, float y, float z){
+        this.gyroX = x;
+        this.gyroY = y;
+        this.gyroZ = z;
+    }
+    public String _gyroscope(){
+        return "{\"x\":" + Float.toString(this.gyroX) +
+                ",\"y\":" + Float.toString(this.gyroY) +
+                ",\"z\":" + Float.toString(this.gyroZ) + "}";
     }
     
     public String app_name(){

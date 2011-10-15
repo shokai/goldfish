@@ -18,13 +18,18 @@ public class SensorListener implements SensorEventListener{
     }
 
     public void onSensorChanged(SensorEvent e) {
-        if (e.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            try{
+        try{
+            switch(e.sensor.getType()){
+            case Sensor.TYPE_ACCELEROMETER:
                 jsObj.setAccelerometer(e.values[0], e.values[1], e.values[2]); // x,y,z
+                break;
+            case Sensor.TYPE_GYROSCOPE:
+                jsObj.setGyroscope(e.values[0], e.values[1], e.values[2]); // x,y,z
+                break;
             }
-            catch (Exception ex) {
-                ex.printStackTrace();
-            }
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 

@@ -10,3 +10,7 @@ gynamic.gyroscope = function(){
 gynamic.magnetic_field = function(){
     return JSON.parse(gynamic._magnetic_field());
 }
+
+gynamic.orientation = function(){
+    return JSON.parse(gynamic._orientation());
+}

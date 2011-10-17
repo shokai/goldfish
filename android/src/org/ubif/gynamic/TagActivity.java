@@ -2,14 +2,12 @@ package org.ubif.gynamic;
 
 import java.lang.reflect.Field;
 import java.util.*;
-import java.util.regex.*;
 
 import com.google.common.primitives.UnsignedBytes;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.hardware.*;
-import android.net.Uri;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -88,7 +86,7 @@ public class TagActivity extends Activity {
                 String id = sb.toString();
                 this.tag_id = id;
             }
-            else if(action.equals(Action.ACTION_MAIN)){
+            else if(action.equals(Intent.ACTION_MAIN)){
                 this.tag_id = intent.getExtras().getString("tag_id");
             }
             notify("TAG:" + tag_id);
@@ -112,7 +110,7 @@ public class TagActivity extends Activity {
     protected void onResume() {
         super.onResume();
         int[] arr = {Sensor.TYPE_ACCELEROMETER, Sensor.TYPE_GYROSCOPE, Sensor.TYPE_LIGHT,
-                     Sensor.TYPE_MAGNETIC_FIELD};
+                     Sensor.TYPE_MAGNETIC_FIELD, Sensor.TYPE_ORIENTATION};
         for(int i = 0; i < arr.length; i++){
             int type = arr[i];
             List<Sensor> sensors = sm.getSensorList(type);

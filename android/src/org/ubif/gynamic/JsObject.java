@@ -55,6 +55,19 @@ public class JsObject {
                 ",\"z\":" + Float.toString(this.magnetZ) + "}";
     }
     
+    private float azimuth, pitch, roll;
+    public void setOrientation(float azimush, float pitch, float roll){
+        this.azimuth = azimush;
+        this.pitch = pitch;
+        this.roll = roll;
+    }
+    
+    public String _orientation(){
+        return "{\"azimush\":" + Float.toString(this.azimuth) +
+                ",\"pitch\":" + Float.toString(this.pitch) +
+                ",\"roll\":" + Float.toString(this.roll) + "}";
+    }
+    
     public String app_name(){
         return context.getResources().getString(R.string.app_name);
     }

@@ -22,6 +22,10 @@ $(function(){
               $('#magnet .x .value').html(magnet.x);
               $('#magnet .y .value').html(magnet.y);
               $('#magnet .z .value').html(magnet.z);
+              var ori = gynamic.orientation();
+              $('#orientation .azimush .value').html(ori.azimush);
+              $('#orientation .pitch .value').html(ori.pitch);
+              $('#orientation .roll .value').html(ori.roll);
               var light = gynamic.light();
               $('#light .value').html(light);
           }, 50

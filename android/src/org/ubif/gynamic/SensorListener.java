@@ -33,6 +33,9 @@ public class SensorListener implements SensorEventListener{
             case Sensor.TYPE_MAGNETIC_FIELD:
                 jsObj.setMagneticField(e.values[0], e.values[1], e.values[2]);
                 break;
+            case Sensor.TYPE_ORIENTATION:
+                jsObj.setOrientation(e.values[0], e.values[1], e.values[2]);
+                break;
             }
         }
         catch (Exception ex) {

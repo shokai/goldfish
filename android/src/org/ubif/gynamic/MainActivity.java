@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
                if (tag.length() < 1) return;
                trace("input tag:"+tag);
                Intent it = new Intent(that, TagActivity.class);
-               it.setAction(Action.ACTION_MAIN);
+               it.setAction(Intent.ACTION_MAIN);
                it.putExtra("tag_id", tag);
                startActivityForResult(it, 1);
            }

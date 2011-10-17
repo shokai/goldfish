@@ -15,3 +15,8 @@ get '/sample' do
   @tag = 'sample'
   haml :sample
 end
+
+get '/samples/orientation' do
+  @tag = 'samples/orientation'
+  haml 'samples/orientation'.to_sym
+end

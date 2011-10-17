@@ -29,8 +29,8 @@ public class JsObject {
     }
     public String _gyroscope(){
         return "{\"x\":" + Float.toString(this.gyroX) +
-                ",\"y\":" + Float.toString(this.gyroY) +
-                ",\"z\":" + Float.toString(this.gyroZ) + "}";
+               ",\"y\":" + Float.toString(this.gyroY) +
+               ",\"z\":" + Float.toString(this.gyroZ) + "}";
     }
     
     private float light;
@@ -38,7 +38,7 @@ public class JsObject {
         this.light = light;
     }
     
-    public String light(){
+    public String _light(){
         return Float.toString(this.light);
     }
     
@@ -51,8 +51,8 @@ public class JsObject {
     
     public String _magnetic_field(){
         return "{\"x\":" + Float.toString(this.magnetX) +
-                ",\"y\":" + Float.toString(this.magnetY) +
-                ",\"z\":" + Float.toString(this.magnetZ) + "}";
+               ",\"y\":" + Float.toString(this.magnetY) +
+               ",\"z\":" + Float.toString(this.magnetZ) + "}";
     }
     
     private float azimuth, pitch, roll;
@@ -64,8 +64,8 @@ public class JsObject {
     
     public String _orientation(){
         return "{\"azimush\":" + Float.toString(this.azimuth) +
-                ",\"pitch\":" + Float.toString(this.pitch) +
-                ",\"roll\":" + Float.toString(this.roll) + "}";
+               ",\"pitch\":" + Float.toString(this.pitch) +
+               ",\"roll\":" + Float.toString(this.roll) + "}";
     }
     
     public String app_name(){

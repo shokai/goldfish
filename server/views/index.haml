@@ -4,4 +4,9 @@
     %title= @title
   %body
     %h1= @title
-    %a{:href => app_root+'/sample'} sample
+    %h2 samples
+    %ul
+      %li
+        %a{:href => app_root+'/sample'} sensor value
+      %li
+        %a{:href => app_root+'/samples/orientation'} pitch and roll

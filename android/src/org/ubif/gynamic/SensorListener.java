@@ -5,6 +5,7 @@ package org.ubif.gynamic;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
+import android.util.Log;
 
 public class SensorListener implements SensorEventListener{
     
@@ -25,6 +26,12 @@ public class SensorListener implements SensorEventListener{
                 break;
             case Sensor.TYPE_GYROSCOPE:
                 jsObj.setGyroscope(e.values[0], e.values[1], e.values[2]); // x,y,z
+                break;
+            case Sensor.TYPE_LIGHT:
+                jsObj.setLight(e.values[0]);
+                break;
+            case Sensor.TYPE_MAGNETIC_FIELD:
+                jsObj.setMagneticField(e.values[0], e.values[1], e.values[2]);
                 break;
             }
         }

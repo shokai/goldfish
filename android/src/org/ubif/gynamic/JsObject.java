@@ -33,6 +33,28 @@ public class JsObject {
                 ",\"z\":" + Float.toString(this.gyroZ) + "}";
     }
     
+    private float light;
+    public void setLight(float light){
+        this.light = light;
+    }
+    
+    public String light(){
+        return Float.toString(this.light);
+    }
+    
+    private float magnetX, magnetY, magnetZ;
+    public void setMagneticField(float x, float y, float z){
+        this.magnetX = x;
+        this.magnetY = y;
+        this.magnetZ = z;
+    }
+    
+    public String _magnetic_field(){
+        return "{\"x\":" + Float.toString(this.magnetX) +
+                ",\"y\":" + Float.toString(this.magnetY) +
+                ",\"z\":" + Float.toString(this.magnetZ) + "}";
+    }
+    
     public String app_name(){
         return context.getResources().getString(R.string.app_name);
     }

@@ -111,7 +111,8 @@ public class TagActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        int[] arr = {Sensor.TYPE_ACCELEROMETER, Sensor.TYPE_GYROSCOPE};
+        int[] arr = {Sensor.TYPE_ACCELEROMETER, Sensor.TYPE_GYROSCOPE, Sensor.TYPE_LIGHT,
+                     Sensor.TYPE_MAGNETIC_FIELD};
         for(int i = 0; i < arr.length; i++){
             int type = arr[i];
             List<Sensor> sensors = sm.getSensorList(type);

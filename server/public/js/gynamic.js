@@ -6,3 +6,7 @@ gynamic.accelerometer = function(){
 gynamic.gyroscope = function(){
     return JSON.parse(gynamic._gyroscope());
 };
+
+gynamic.magnetic_field = function(){
+    return JSON.parse(gynamic._magnetic_field());
+}

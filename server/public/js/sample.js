@@ -18,6 +18,12 @@ $(function(){
               $('#gyroscope .x .value').html(gyro.x);
               $('#gyroscope .y .value').html(gyro.y);
               $('#gyroscope .z .value').html(gyro.z);
+              var magnet = gynamic.magnetic_field();
+              $('#magnet .x .value').html(magnet.x);
+              $('#magnet .y .value').html(magnet.y);
+              $('#magnet .z .value').html(magnet.z);
+              var light = gynamic.light();
+              $('#light .value').html(light);
           }, 50
       );
   }

@@ -1,13 +1,13 @@
 all:
 	ant debug
 setup:
-	android update project --path `pwd` --name 'gynamic'
+	android update project --path `pwd` --name 'goldfish'
 install:
-	adb install -r bin/gynamic-debug.apk
+	adb install -r bin/goldfish-debug.apk
 uninstall:
-	adb uninstall org.ubif.gynamic
+	adb uninstall org.ubif.goldfish
 debug:
-	adb logcat | grep gynamic
+	adb logcat | grep goldfish
 clean:
 	/bin/rm -r -f bin/classes
 update:

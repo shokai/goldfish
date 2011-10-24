@@ -1,10 +1,10 @@
-Gynamic
+GoldFish
 =======
 
 Clone this Repository
 ---------------------
 
-    % git clone git://github.com/shokai/gynamic.git
+    % git clone git://github.com/shokai/goldfish.git
 
 System Requirements
 -------------------

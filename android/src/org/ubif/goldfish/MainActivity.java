@@ -1,4 +1,4 @@
-package org.ubif.gynamic;
+package org.ubif.goldfish;
 
 import android.app.Activity;
 import android.content.Intent;

@@ -1,4 +1,4 @@
-package org.ubif.gynamic;
+package org.ubif.goldfish;
 
 import android.content.Context;
 
@@ -73,7 +73,7 @@ public class JsObject {
     }
     
     public String tag(){
-        if(!this.context.getClass().getName().equals("org.ubif.gynamic.TagActivity")) return null;
+        if(!this.context.getClass().getName().equals("org.ubif.goldfish.TagActivity")) return null;
         return ((TagActivity)context).getTagId();
     }
 

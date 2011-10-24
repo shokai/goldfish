@@ -1,6 +1,6 @@
 // SensorEventを全てJsObjectに渡すListener
 
-package org.ubif.gynamic;
+package org.ubif.goldfish;
 
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;

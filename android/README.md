@@ -1,5 +1,5 @@
-Gynamic Android App
-===================
+GoldFish Android App
+====================
 
 System Requirements
 -------------------

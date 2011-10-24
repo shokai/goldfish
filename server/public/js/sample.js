@@ -6,27 +6,27 @@ var log = function(msg){
 };
 
 $(function(){
-      log("start - tag:"+gynamic.tag());
-      log("app_name:"+gynamic.app_name());
+      log("start - tag:"+goldfish.tag());
+      log("app_name:"+goldfish.app_name());
       setInterval(
           function(){
-              var acc = gynamic.accelerometer();
+              var acc = goldfish.accelerometer();
               $('#accelerometer .x .value').html(acc.x);
               $('#accelerometer .y .value').html(acc.y);
               $('#accelerometer .z .value').html(acc.z);
-              var gyro = gynamic.gyroscope();
+              var gyro = goldfish.gyroscope();
               $('#gyroscope .x .value').html(gyro.x);
               $('#gyroscope .y .value').html(gyro.y);
               $('#gyroscope .z .value').html(gyro.z);
-              var magnet = gynamic.magnetic_field();
+              var magnet = goldfish.magnetic_field();
               $('#magnet .x .value').html(magnet.x);
               $('#magnet .y .value').html(magnet.y);
               $('#magnet .z .value').html(magnet.z);
-              var ori = gynamic.orientation();
+              var ori = goldfish.orientation();
               $('#orientation .azimush .value').html(ori.azimush);
               $('#orientation .pitch .value').html(ori.pitch);
               $('#orientation .roll .value').html(ori.roll);
-              var light = gynamic.light();
+              var light = goldfish.light();
               $('#light .value').html(light);
           }, 50
       );

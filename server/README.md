@@ -1,4 +1,4 @@
-gynamic server
+goldfish server
 ==============
 
 Dependencies

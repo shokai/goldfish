@@ -1,4 +1,4 @@
-package org.ubif.gynamic;
+package org.ubif.goldfish;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -59,7 +59,7 @@ public class TagActivity extends Activity {
         webView.clearCache(true);
         webView.getSettings().setJavaScriptEnabled(true);
         this.jsObj = new JsObject(this);
-        webView.addJavascriptInterface(jsObj, "gynamic");
+        webView.addJavascriptInterface(jsObj, "goldfish");
         
         this.sm = (SensorManager) this.getSystemService(SENSOR_SERVICE);
         this.sl = new SensorListener(this.jsObj);

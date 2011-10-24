@@ -18,15 +18,15 @@ var draw_circle = function(x, y, radius){
 
 
 $(function(){
-      log("start - tag:"+gynamic.tag());
-      log("app_name:"+gynamic.app_name());
+      log("start - tag:"+goldfish.tag());
+      log("app_name:"+goldfish.app_name());
       var canvas_tag = $('canvas#main');
       ctx = canvas_tag[0].getContext('2d');
       x = ctx.canvas.width/2;
       y = ctx.canvas.width/2;
       setInterval(
           function(){
-              var ori = gynamic.orientation();
+              var ori = goldfish.orientation();
               x += ori.roll/-2;
               if(x < 1) x = 1;
               else if(x > ctx.canvas.width) x = ctx.canvas.width-1;

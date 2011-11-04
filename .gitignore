@@ -12,3 +12,4 @@ config.yaml
 package
 build.xml
 local.properties
+*#*

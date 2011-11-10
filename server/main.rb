@@ -20,3 +20,9 @@ get '/samples/orientation' do
   @tag = 'samples/orientation'
   haml 'samples/orientation'.to_sym
 end
+
+get '/samples/socket' do
+  @host = env['SERVER_NAME']
+  @tag = 'samples/socket'
+  haml 'samples/socket'.to_sym
+end

@@ -1,12 +1,15 @@
 package org.ubif.goldfish;
 
+import org.ubif.goldfish.net.*;
+import org.json.JSONObject;
 import android.content.Context;
 
 public class JsObject {
-    private Context context;
+    private AppActivity activity;
+    private LineSocket socket;
     
-    public JsObject(Context context){
-        this.context = context;
+    public JsObject(AppActivity context){
+        this.activity = context;
     }
     
     private float accX, accY, accZ;
@@ -68,13 +71,58 @@ public class JsObject {
                ",\"roll\":" + Float.toString(this.roll) + "}";
     }
     
+    public void _socket_connect(String host_port){
+        if(this.socket != null){
+            this.socket.close();
+            this.socket = null;
+        }
+        try{
+            JSONObject json = new JSONObject(host_port);
+            this.socket = new LineSocket(json.getString("host"), json.getInt("port"));
+            final JsObject that = this;
+            this.socket.addEventHandler(new LineSocketEventHandler(){
+                public void onMessage(String line) {
+                    that.activity.loadUrl("javascript:goldfish.socket.onMessage(\""+line+"\");");
+                }
+
+                public void onOpen() {
+                    new Thread(){
+                        public void run(){
+                            activity.loadUrl("javascript:goldfish.socket.onOpen();");
+                        }
+                    }.start();
+                }
+
+                public void onClose() {
+                    new Thread(){
+                        public void run(){
+                            that.activity.loadUrl("javascript:goldfish.socket.onClose();");
+                        }
+                    }.start();
+                }
+            });
+            this.socket.connect();
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
+    
+    public void _socket_send(String msg){
+        this.socket.send(msg);
+    }
+    
+    public void _socket_close(){
+        this.socket.close();
+    }
+    
     public String app_name(){
-        return context.getResources().getString(R.string.app_name);
+        return activity.getResources().getString(R.string.app_name);
     }
     
     public String tag(){
-        if(!this.context.getClass().getName().equals("org.ubif.goldfish.TagActivity")) return null;
-        return ((TagActivity)context).getTagId();
+        if(!this.activity.getClass().getName().equals("org.ubif.goldfish.TagActivity")) return null;
+        return ((TagActivity)activity).getTagId();
     }
 
 }

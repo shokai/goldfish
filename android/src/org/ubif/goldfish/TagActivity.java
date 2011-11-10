@@ -2,6 +2,7 @@ package org.ubif.goldfish;
 
 import java.lang.reflect.Field;
 import java.util.*;
+import java.io.*;
 
 import com.google.common.primitives.UnsignedBytes;
 
@@ -16,8 +17,7 @@ import android.view.View;
 import android.webkit.*;
 import android.widget.*;
 
-public class TagActivity extends Activity {
-    private WebView webView;
+public class TagActivity extends AppActivity {
     private String tag_id = null;
     public String getTagId(){ return this.tag_id; }
     private String base_url;

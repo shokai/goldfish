@@ -17,3 +17,23 @@ goldfish.orientation = function(){
 goldfish.light = function(){
     return goldfish._light();
 };
+
+goldfish.socket = {};
+goldfish.socket.connect = function(host, port){
+    goldfish._socket_connect(JSON.stringify({host:host, port:port}));
+};
+
+goldfish.socket.send = function(msg){
+    goldfish._socket_send(msg);  
+};
+
+goldfish.socket.close = function(){
+    goldfish._socket_close();
+};
+
+goldfish.socket.onOpen = function(){
+};
+goldfish.socket.onClose = function(){
+};
+goldfish.socket.onMessage = function(msg){
+};

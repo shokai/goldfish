@@ -2,11 +2,9 @@ package org.ubif.goldfish;
 
 import java.lang.reflect.Field;
 import java.util.*;
-import java.io.*;
 
 import com.google.common.primitives.UnsignedBytes;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.hardware.*;
 import android.nfc.NfcAdapter;
@@ -118,12 +116,13 @@ public class TagActivity extends AppActivity {
                 sm.registerListener(this.sl, sensors.get(0), SensorManager.SENSOR_DELAY_FASTEST);
             }
         }
+        
     }
 
     @Override
     protected void onStop() {
+        jsObj.stop();
         sm.unregisterListener(this.sl);
-        finish();
         super.onStop();
     }
     

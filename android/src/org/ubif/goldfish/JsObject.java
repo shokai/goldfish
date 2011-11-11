@@ -2,7 +2,6 @@ package org.ubif.goldfish;
 
 import org.ubif.goldfish.net.*;
 import org.json.JSONObject;
-import android.content.Context;
 
 public class JsObject {
     private AppActivity activity;
@@ -88,7 +87,7 @@ public class JsObject {
                 public void onOpen() {
                     new Thread(){
                         public void run(){
-                            activity.loadUrl("javascript:goldfish.socket.onOpen();");
+                            that.activity.loadUrl("javascript:goldfish.socket.onOpen();");
                         }
                     }.start();
                 }
@@ -125,4 +124,7 @@ public class JsObject {
         return ((TagActivity)activity).getTagId();
     }
 
+    protected void stop(){
+        this.socket.close();
+    }
 }

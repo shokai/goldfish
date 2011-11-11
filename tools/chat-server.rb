@@ -27,7 +27,8 @@ class EchoServer < EM::Connection
   end
 
   def receive_data data
-    return if data.strip.size < 1
+    data.strip!
+    return if data.size < 1
     puts "<#{@sid}> #{data}"
     @@channel.push "#{data}\n"
   end

@@ -125,6 +125,6 @@ public class JsObject {
     }
 
     protected void stop(){
-        this.socket.close();
+        if(this.socket != null) this.socket.close();
     }
 }

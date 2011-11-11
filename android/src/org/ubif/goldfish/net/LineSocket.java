@@ -50,7 +50,7 @@ public class LineSocket{
                         if(line != null){
                             if(handler != null) handler.onMessage(line);
                         }
-                        Thread.sleep(10);
+                        Thread.sleep(500);
                     }
                     catch(SocketException ex){
                         that.close();

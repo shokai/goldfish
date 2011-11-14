@@ -1,6 +1,7 @@
 package org.ubif.goldfish;
 
 import org.ubif.goldfish.net.*;
+import java.net.URLEncoder;
 import org.json.JSONObject;
 
 public class JsObject {
@@ -9,6 +10,21 @@ public class JsObject {
     
     public JsObject(AppActivity context){
         this.activity = context;
+    }
+    
+    public boolean exec(String javascript){
+        try{
+            String encoded = URLEncoder.encode(javascript, "UTF-8");
+            activity.loadUrl("javascript:goldfish.eval_script(\""+encoded+"\");");
+        }
+        catch(Exception ex){
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean exec(String javascript, JsExecCallback callback){
+        return this.exec(javascript);
     }
     
     private float accX, accY, accZ;
@@ -81,13 +97,13 @@ public class JsObject {
             final JsObject that = this;
             this.socket.addEventHandler(new LineSocketEventHandler(){
                 public void onMessage(String line) {
-                    that.activity.loadUrl("javascript:goldfish.socket.onMessage(\""+line+"\");");
+                    that.exec("goldfish.socket.onMessage(\""+line+"\");");
                 }
 
                 public void onOpen() {
                     new Thread(){
                         public void run(){
-                            that.activity.loadUrl("javascript:goldfish.socket.onOpen();");
+                            that.exec("goldfish.socket.onOpen();");
                         }
                     }.start();
                 }
@@ -95,7 +111,7 @@ public class JsObject {
                 public void onClose() {
                     new Thread(){
                         public void run(){
-                            that.activity.loadUrl("javascript:goldfish.socket.onClose();");
+                            that.exec("goldfish.socket.onClose();");
                         }
                     }.start();
                 }

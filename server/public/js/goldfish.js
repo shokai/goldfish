@@ -37,3 +37,10 @@ goldfish.socket.onClose = function(){
 };
 goldfish.socket.onMessage = function(msg){
 };
+
+goldfish.eval_script = function(encoded_script){
+    var script = decodeURI(encoded_script);
+    eval(script);
+};
+
+

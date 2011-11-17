@@ -6,7 +6,7 @@
     :javascript
       var tag = "#{@tag}";
       var host = "#{@host}";
-      var port = 8082
+      var port = #{@port};
     %script{:type => 'application/javascript', :src => "#{app_root}/js/jquery.js"}
     %script{:type => 'application/javascript', :src => "#{app_root}/js/util.js"}
     %script{:type => 'application/javascript', :src => "#{app_root}/js/goldfish.js"}

@@ -23,6 +23,7 @@ end
 
 get '/samples/tcp_chat' do
   @host = env['SERVER_NAME']
+  @port = @@conf['chat_port']
   @tag = 'samples/tcp_chat'
   haml 'samples/tcp_chat'.to_sym
 end

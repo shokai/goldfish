@@ -2,3 +2,5 @@
 mongo_server : '127.0.0.1'
 mongo_port : 27017
 mongo_dbname : 'goldfish'
+
+chat_port : 8082

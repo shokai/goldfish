@@ -132,8 +132,10 @@ public class JsObject {
     }
     
     public void _tcp_close(){
-        this.tcp.close();
-        this.tcp = null;
+        if(this.tcp != null){
+            this.tcp.close();
+            this.tcp = null;
+        }
     }
     
     public String app_name(){
@@ -146,6 +148,9 @@ public class JsObject {
     }
 
     protected void stop(){
-        if(this.tcp != null) this.tcp.close();
+        if(this.tcp != null){
+            this.tcp.close();
+            this.tcp = null;
+        }
     }
 }

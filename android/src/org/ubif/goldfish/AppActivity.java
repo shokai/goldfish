@@ -9,4 +9,7 @@ public class AppActivity extends Activity{
     public void loadUrl(String url){
         webView.loadUrl(url);
     }
+    public void addJavascriptInterface(JsObject jsObj){
+        if(webView!=null) webView.addJavascriptInterface(jsObj, jsObj.getPath());
+    }
 }

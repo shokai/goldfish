@@ -56,8 +56,8 @@ public class TagActivity extends AppActivity {
         });
         webView.clearCache(true);
         webView.getSettings().setJavaScriptEnabled(true);
-        this.jsObj = new JsObject(this);
-        webView.addJavascriptInterface(jsObj, "goldfish");
+        this.jsObj = new JsObject(this, "goldfish");
+        this.addJavascriptInterface(jsObj);
         
         this.sm = (SensorManager) this.getSystemService(SENSOR_SERVICE);
         this.sl = new SensorListener(this.jsObj);

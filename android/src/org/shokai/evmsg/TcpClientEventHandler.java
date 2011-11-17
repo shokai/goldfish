@@ -1,6 +1,6 @@
-package org.ubif.goldfish.net;
+package org.shokai.evmsg;
 
-public interface LineSocketEventHandler{
+public interface TcpClientEventHandler{
     public void onMessage(String line);
     public void onOpen();
     public void onClose();

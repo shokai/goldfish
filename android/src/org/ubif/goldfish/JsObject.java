@@ -1,20 +1,24 @@
 package org.ubif.goldfish;
 
-import org.ubif.goldfish.net.*;
-import java.net.URLEncoder;
+import org.shokai.evmsg.*;
+import android.util.Base64;
 import org.json.JSONObject;
 
 public class JsObject {
     private AppActivity activity;
-    private LineSocket socket;
+    private org.shokai.evmsg.TcpClient tcp;
+    private org.shokai.evmsg.Udp udp;
+    private String path;
+    public String getPath(){return this.path;}
     
-    public JsObject(AppActivity context){
+    public JsObject(AppActivity context, String path){
         this.activity = context;
+        this.path = path;
     }
     
     public boolean exec(String javascript){
         try{
-            String encoded = URLEncoder.encode(javascript, "UTF-8");
+            String encoded = Base64.encodeToString(javascript.getBytes(), Base64.URL_SAFE);
             activity.loadUrl("javascript:goldfish.eval_script(\""+encoded+"\");");
         }
         catch(Exception ex){
@@ -86,24 +90,24 @@ public class JsObject {
                ",\"roll\":" + Float.toString(this.roll) + "}";
     }
     
-    public void _socket_connect(String host_port){
-        if(this.socket != null){
-            this.socket.close();
-            this.socket = null;
+    public void _tcp_connect(String host_port){
+        if(this.tcp != null){
+            this.tcp.close();
+            this.tcp = null;
         }
         try{
             JSONObject json = new JSONObject(host_port);
-            this.socket = new LineSocket(json.getString("host"), json.getInt("port"));
+            this.tcp = new TcpClient(json.getString("host"), json.getInt("port"));
             final JsObject that = this;
-            this.socket.addEventHandler(new LineSocketEventHandler(){
+            this.tcp.addEventHandler(new TcpClientEventHandler(){
                 public void onMessage(String line) {
-                    that.exec("goldfish.socket.onMessage(\""+line+"\");");
+                    that.exec("goldfish.tcp.onMessage(\""+line+"\");");
                 }
 
                 public void onOpen() {
                     new Thread(){
                         public void run(){
-                            that.exec("goldfish.socket.onOpen();");
+                            that.exec("goldfish.tcp.onOpen();");
                         }
                     }.start();
                 }
@@ -111,24 +115,24 @@ public class JsObject {
                 public void onClose() {
                     new Thread(){
                         public void run(){
-                            that.exec("goldfish.socket.onClose();");
+                            that.exec("goldfish.tcp.onClose();");
                         }
                     }.start();
                 }
             });
-            this.socket.connect();
+            this.tcp.connect();
         }
         catch(Exception ex){
             ex.printStackTrace();
         }
     }
     
-    public void _socket_send(String msg){
-        this.socket.send(msg);
+    public void _tcp_send(String msg){
+        this.tcp.send(msg);
     }
     
-    public void _socket_close(){
-        this.socket.close();
+    public void _tcp_close(){
+        this.tcp.close();
     }
     
     public String app_name(){
@@ -141,6 +145,6 @@ public class JsObject {
     }
 
     protected void stop(){
-        if(this.socket != null) this.socket.close();
+        if(this.tcp != null) this.tcp.close();
     }
 }

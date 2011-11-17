@@ -1,33 +1,35 @@
-package org.ubif.goldfish.net;
+package org.shokai.evmsg;
 
 import java.io.*;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.ConnectException;
 
-public class LineSocket{
+public class TcpClient{
     private String host;
     private int port;
     private Socket sock;
+    private int readInterval;
+    public int getReadInterval(){ return readInterval; }
+    public void setReadInterval(int msec){ this.readInterval = msec; }
     private BufferedWriter bWriter;
     private BufferedReader bReader;
     private InputStreamReader iReader;
-    private LineSocketEventHandler handler;
+    private TcpClientEventHandler handler;
     private boolean closer = false;
 
-    public LineSocket(String host, int port){
+    public TcpClient(String host, int port){
         this.host = host;
         this.port = port;
     }
 
-    public boolean isConnected(){
-        return sock.isConnected();
+    public TcpClient(Socket connected_socket){
+        this.sock = connected_socket;
     }
-    
-    public boolean connect(){
+
+    public boolean run(){
         this.closer = false;
         try{
-            this.sock = new Socket(host, port);
             this.bWriter = new BufferedWriter(new OutputStreamWriter(this.sock.getOutputStream()));
             this.iReader = new InputStreamReader(this.sock.getInputStream());
             this.bReader = new BufferedReader(this.iReader);
@@ -41,16 +43,16 @@ public class LineSocket{
             if(handler != null) handler.onClose();
             return false;
         }
-        final LineSocket that = this;
+        final TcpClient that = this;
         new Thread(){
             public void run(){
                 while(!closer){
                     try{
+                        Thread.sleep(readInterval);
                         String line = bReader.readLine();
-                        if(line != null){
+                        if(line != null && line.length() > 0){
                             if(handler != null) handler.onMessage(line);
                         }
-                        Thread.sleep(500);
                     }
                     catch(SocketException ex){
                         that.close();
@@ -68,6 +70,23 @@ public class LineSocket{
         return true;
     }
 
+    public boolean connect(){
+        if(this.sock != null) return false;
+        try{
+            this.sock = new Socket(host, port);
+        }
+        catch(ConnectException ex){
+            if(handler != null) handler.onClose();
+            return false;
+        }
+        catch(Exception ex){
+            this.close();
+            if(handler != null) handler.onClose();
+            return false;
+        }
+        return run();
+    }
+
     public void close(){
         try{
             closer = true;
@@ -75,16 +94,17 @@ public class LineSocket{
             bWriter.close();
             iReader.close();
             sock.close();
+            sock = null;
             if(handler != null) handler.onClose();
         }
         catch(Exception ex){
-            ex.printStackTrace();
         }
     }
     
     public boolean send(String line){
+        if(sock == null) return false;
         try{
-            bWriter.write(line);
+            bWriter.write(line+"\n");
             bWriter.flush();
         }
         catch(Exception ex){
@@ -95,7 +115,7 @@ public class LineSocket{
         return true;
     }
 
-    public void addEventHandler(LineSocketEventHandler handler){
+    public void addEventHandler(TcpClientEventHandler handler){
         this.handler = handler;
     }
 

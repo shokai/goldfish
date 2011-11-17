@@ -18,29 +18,27 @@ goldfish.light = function(){
     return goldfish._light();
 };
 
-goldfish.socket = {};
-goldfish.socket.connect = function(host, port){
-    goldfish._socket_connect(JSON.stringify({host:host, port:port}));
+goldfish.tcp = {};
+goldfish.tcp.connect = function(host, port){
+    goldfish._tcp_connect(JSON.stringify({host:host, port:port}));
 };
 
-goldfish.socket.send = function(msg){
-    goldfish._socket_send(msg);  
+goldfish.tcp.send = function(msg){
+    goldfish._tcp_send(msg);
 };
 
-goldfish.socket.close = function(){
-    goldfish._socket_close();
+goldfish.tcp.close = function(){
+    goldfish._tcp_close();
 };
 
-goldfish.socket.onOpen = function(){
+goldfish.tcp.onOpen = function(){
 };
-goldfish.socket.onClose = function(){
+goldfish.tcp.onClose = function(){
 };
-goldfish.socket.onMessage = function(msg){
+goldfish.tcp.onMessage = function(msg){
 };
 
 goldfish.eval_script = function(encoded_script){
-    var script = decodeURI(encoded_script);
+    var script = decodeURI(encoded_script).replace('%3B',';');
     eval(script);
 };
-
-

@@ -8,8 +8,9 @@
       var host = "#{@host}";
       var port = 8082
     %script{:type => 'application/javascript', :src => "#{app_root}/js/jquery.js"}
+    %script{:type => 'application/javascript', :src => "#{app_root}/js/util.js"}
     %script{:type => 'application/javascript', :src => "#{app_root}/js/goldfish.js"}
-    %script{:type => 'application/javascript', :src => "#{app_root}/js/samples/socket.js"}
+    %script{:type => 'application/javascript', :src => "#{app_root}/js/samples/tcp_chat.js"}
   %body
     %h1 Socket Chat
     %div#msg

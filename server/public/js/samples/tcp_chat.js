@@ -7,38 +7,37 @@ $(
             function(){
                 var name = $('input#name').val();
                 var msg = $('input#msg').val();
-                goldfish.socket.send("<"+name+"> "+msg);
+                goldfish.tcp.send("<"+name+"> "+msg);
                 $('input#msg').val('');
             }
         );
         
-        goldfish.socket.onOpen = function(){
-            log("* socket connected!");
+        goldfish.tcp.onOpen = function(){
+            log("* tcp connected! "+host+":"+port);
         };
 
-        goldfish.socket.onClose = function(){
-            log("* socket closed");
+        goldfish.tcp.onClose = function(){
+            log("* tcp closed");
             setTimeout(
                 function(){ // reConnect
-                    goldfish.socket.connect(host, port);
+                    goldfish.tcp.connect(host, port);
                 },
                 3000
             );
         };
         
         // on receive message
-        goldfish.socket.onMessage = function(msg){
+        goldfish.tcp.onMessage = function(msg){
             log(msg);
         };
         
-        log("goldfish.socket.connect("+host+", "+port+")");
-        goldfish.socket.connect(host, port);
+        goldfish.tcp.connect(host, port);
     }
 );
 
 var log = function(msg){
     console.log(msg);
     $('ul#log').prepend(
-        $('<li>').html(msg)
+        $('<li>').html(msg.htmlEscape())
     );
 };

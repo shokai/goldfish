@@ -1,7 +1,7 @@
 package org.ubif.goldfish;
 
 import org.shokai.evmsg.*;
-import android.util.Base64;
+import java.net.URLEncoder;
 import org.json.JSONObject;
 
 public class JsObject {
@@ -18,7 +18,7 @@ public class JsObject {
     
     public boolean exec(String javascript){
         try{
-            String encoded = Base64.encodeToString(javascript.getBytes(), Base64.URL_SAFE);
+            String encoded = URLEncoder.encode(javascript);
             activity.loadUrl("javascript:goldfish.eval_script(\""+encoded+"\");");
         }
         catch(Exception ex){
@@ -101,13 +101,13 @@ public class JsObject {
             final JsObject that = this;
             this.tcp.addEventHandler(new TcpClientEventHandler(){
                 public void onMessage(String line) {
-                    that.exec("goldfish.tcp.onMessage(\""+line+"\");");
+                    that.exec(path+".tcp.onMessage(\""+line+"\");");
                 }
 
                 public void onOpen() {
                     new Thread(){
                         public void run(){
-                            that.exec("goldfish.tcp.onOpen();");
+                            that.exec(path+".tcp.onOpen();");
                         }
                     }.start();
                 }
@@ -115,7 +115,7 @@ public class JsObject {
                 public void onClose() {
                     new Thread(){
                         public void run(){
-                            that.exec("goldfish.tcp.onClose();");
+                            that.exec(path+".tcp.onClose();");
                         }
                     }.start();
                 }
@@ -133,6 +133,7 @@ public class JsObject {
     
     public void _tcp_close(){
         this.tcp.close();
+        this.tcp = null;
     }
     
     public String app_name(){

@@ -116,14 +116,15 @@ public class TagActivity extends AppActivity {
                 sm.registerListener(this.sl, sensors.get(0), SensorManager.SENSOR_DELAY_FASTEST);
             }
         }
-        
+        this.webView.resumeTimers();
     }
 
     @Override
-    protected void onStop() {
-        jsObj.stop();
+    protected void onPause() {
         sm.unregisterListener(this.sl);
-        super.onStop();
+        this.jsObj.stop();
+        this.webView.pauseTimers();
+        super.onPause();
     }
     
 }

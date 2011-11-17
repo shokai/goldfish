@@ -98,6 +98,7 @@ public class JsObject {
         try{
             JSONObject json = new JSONObject(host_port);
             this.tcp = new TcpClient(json.getString("host"), json.getInt("port"));
+            this.tcp.setReadInterval(100);
             final JsObject that = this;
             this.tcp.addEventHandler(new TcpClientEventHandler(){
                 public void onMessage(String line) {

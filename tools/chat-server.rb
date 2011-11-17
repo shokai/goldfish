@@ -42,4 +42,11 @@ end
 EM::run do
   EM::start_server('0.0.0.0', params[:port].to_i, EchoServer)
   puts "server start - port #{params[:port].to_i}"
+  EM::defer do
+    loop do
+      line = gets.strip
+      next if line.to_s.size < 1
+      @@channel.push line+"\n"
+    end
+  end
 end

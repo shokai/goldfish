@@ -34,3 +34,10 @@ get '/samples/udp_mouse' do
   @tag = 'samples/udp_mouse'
   haml 'samples/udp_mouse'.to_sym
 end
+
+get '/samples/udp_touchpad' do
+  @host = env['SERVER_NAME']
+  @port = @@conf['mouse_port']
+  @tag = 'samples/udp_touchpad'
+  haml 'samples/udp_touchpad'.to_sym
+end

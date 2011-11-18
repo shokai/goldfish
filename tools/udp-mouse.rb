@@ -20,7 +20,7 @@ end
 @@robot = Robot.new
 @@x = 0
 @@y = 0
-@@last = Time.now.to_i
+@@last = Time.now.to_f
 
 class Receiver < EM::Connection
   def receive_data data
@@ -30,6 +30,7 @@ class Receiver < EM::Connection
     begin
       if data =~ /^\-?[\d\.]+,\-?[\d\.]+$/
         @@x, @@y = data.split(',').map{|i| i.to_f }
+        @@last = Time.now.to_f
       else
         if data == 'left_press'
           @@robot.mouse_press InputEvent::BUTTON1_MASK
@@ -45,7 +46,6 @@ class Receiver < EM::Connection
           @@robot.mouse_release InputEvent::BUTTON2_MASK
         end
       end
-        @@last = Time.now.to_i
     rescue => e
       STDERR.puts e
     end
@@ -58,7 +58,7 @@ EM::run do
   EM::defer do
     loop do
       mouse = java.awt.MouseInfo.pointer_info.location
-      if Time.now.to_i - @@last < 2
+      if Time.now.to_f - @@last < 0.5
         @@robot.mouse_move(mouse.x+@@x, mouse.y+@@y)
       end
       sleep 0.01

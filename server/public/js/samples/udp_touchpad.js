@@ -9,7 +9,7 @@ $(
 
         
         goldfish.udp.onMessage = function(msg){
-            log("> "+msg);  
+            console.log("> "+msg);  
         };
         
         goldfish.udp.open(host, port);

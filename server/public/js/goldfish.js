@@ -38,6 +38,20 @@ goldfish.tcp.onClose = function(){
 goldfish.tcp.onMessage = function(msg){
 };
 
+goldfish.udp = {};
+goldfish.udp.open = function(host, port){
+    goldfish._udp_open(JSON.stringify({host:host,port:port}));
+};
+goldfish.udp.send = function(msg){
+    goldfish._udp_send(msg);
+};
+goldfish.udp._onMessage = function(data){
+    console.log(data);
+    goldfish.udp.onMessage(JSON.parse(msg));
+};
+goldfish.udp.onMessage = function(msg){
+};
+
 goldfish.eval_script = function(encoded_script){
     var script = decodeURI(encoded_script).replace('%3B',';');
     eval(script);

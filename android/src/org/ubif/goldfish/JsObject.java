@@ -8,6 +8,8 @@ public class JsObject {
     private AppActivity activity;
     private org.shokai.evmsg.TcpClient tcp;
     private org.shokai.evmsg.Udp udp;
+    private String udp_host;
+    private int udp_port;
     private String path;
     public String getPath(){return this.path;}
     
@@ -139,6 +141,34 @@ public class JsObject {
         }
     }
     
+    public void _udp_open(String host_port){
+        try{
+            JSONObject json = new JSONObject(host_port);
+            if(this.udp != null){
+                this.udp.close();
+                this.udp = null;
+            }
+            this.udp = new Udp(json.getString("host"), json.getInt("port"));
+            final JsObject that = this;
+            this.udp.addEventHandler(new UdpEventHandler(){
+                public void onMessage(String host, int port, String line) {
+                    String data = "{host:\""+host+"\""+
+                                  ",port:"+port+
+                                  ",data:\""+line+"\" }";
+                    that.exec(path+".udp._onMessage("+data+");");
+                }
+            });
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
+    
+    public void _udp_send(String msg){
+        if(this.udp == null) this._udp_open("{host:\""+udp_host+"\" ,port:"+udp_port+"}");
+        this.udp.send(msg);
+    }
+    
     public String app_name(){
         return activity.getResources().getString(R.string.app_name);
     }
@@ -152,6 +182,10 @@ public class JsObject {
         if(this.tcp != null){
             this.tcp.close();
             this.tcp = null;
+        }
+        if(this.udp != null){
+            this.udp.close();
+            this.udp = null;
         }
     }
 }

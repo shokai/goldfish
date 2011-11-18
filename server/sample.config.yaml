@@ -4,3 +4,4 @@ mongo_port : 27017
 mongo_dbname : 'goldfish'
 
 chat_port : 8082
+mouse_port : 8083

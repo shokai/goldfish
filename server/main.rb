@@ -27,3 +27,10 @@ get '/samples/tcp_chat' do
   @tag = 'samples/tcp_chat'
   haml 'samples/tcp_chat'.to_sym
 end
+
+get '/samples/udp_mouse' do
+  @host = env['SERVER_NAME']
+  @port = @@conf['mouse_port']
+  @tag = 'samples/udp_mouse'
+  haml 'samples/udp_mouse'.to_sym
+end

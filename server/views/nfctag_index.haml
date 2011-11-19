@@ -24,7 +24,6 @@
         %th id
         %th URL
         %th title
-        %th description
       - @tags.each do |tag|
         %tr
           %td= tag.hex_id
@@ -35,7 +34,5 @@
               - url = url[0...url_limit]+'...' if url.size > url_limit
               #{url}
           %td= tag.title
-          %td= tag.description
           %td
             %a{:href => "#{app_root}/tag/#{tag.hex_id}/edit"} [edit]
-        

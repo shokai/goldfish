@@ -4,7 +4,6 @@ $(
             function(){
                 var url = $('input#url').val();
                 var title = $('input#title').val();
-                var description = $('input#description').val();
                 console.log(url);
                 $('#btn_save').attr('disabled', true);
                 $.ajax(
@@ -12,8 +11,7 @@ $(
                         url : app_root+'/tag/'+tag+'.json',
                         data : {
                             url : url,
-                            title : title,
-                            description : description
+                            title : title
                         },
                         success : function(e){
                             alert('saved!');

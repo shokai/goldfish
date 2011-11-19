@@ -21,7 +21,6 @@ end
 post '/tag/:hex_id.json' do
   @id = params[:hex_id].downcase
   @url = params[:url]
-  @description = params[:description].toutf8
   @title = params[:title].toutf8
 
   NfcTag.valid?(@id) or throw(:halt, [400, {:error => 'invalid tag'}.to_json])
@@ -31,7 +30,6 @@ post '/tag/:hex_id.json' do
     @tag = NfcTag.where(:hex_id => @id).first
     @tag = NfcTag.new unless @tag
     @tag.hex_id = @id
-    @tag.description = @description
     @tag.url = @url
     @tag.title = @title
     @tag.save

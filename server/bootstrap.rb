@@ -9,8 +9,6 @@ require 'mongoid'
     require rb
   end
 end
-# require File.dirname(__FILE__)+'/models/nfctag'
-# require File.dirname(__FILE__)+'/controllers/sample.rb'
 require 'haml'
 require 'yaml'
 require 'json'

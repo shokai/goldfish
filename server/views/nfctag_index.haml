@@ -1,0 +1,17 @@
+!!! XHTML
+%html
+  %head
+    %title= "#{@title} - tag:#{@tag}"
+  %body
+    %a{:href => app_root}= @title
+    %h1 tags
+    %table#tags
+      - @tags.each do |tag|
+        %tr
+          %td= tag.hex_id
+          %td= tag.url
+          %td= tag.title
+          %td= tag.description
+          %td
+            %a{:href => "#{app_root}/tag/#{tag.hex_id}/edit"} [edit]
+        

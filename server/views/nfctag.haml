@@ -1,0 +1,20 @@
+!!! XHTML
+%html
+  %head
+    %title= "#{@title} - tag:#{@tag}"
+  %body
+    %a{:href => "#{app_root}/tag"}= "#{@title}/tag"
+    %h1= "tag:#{@id}"
+    %ul
+      %li 
+        %span.name URL
+        %span.separate : 
+        %input{:type => :text, :id => :name, :value => @tag.url, :size => 80}
+      %li
+        %span.name Title
+        %span.separate : 
+        %input{:type => :text, :id => :name, :value => @tag.title, :size => 80}
+      %li
+        %span.name Description
+        %span.separate : 
+        %input{:type => :text, :id => :name, :value => @tag.description, :size => 80}

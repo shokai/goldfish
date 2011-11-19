@@ -6,6 +6,7 @@ require 'mongoid'
 require 'haml'
 require 'yaml'
 require 'json'
+require 'kconv'
 [:models ,:controllers].each do |dir|
   Dir.glob(File.dirname(__FILE__)+"/#{dir}/*.rb").each do |rb|
     puts "loading #{rb}"

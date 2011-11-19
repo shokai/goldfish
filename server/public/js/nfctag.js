@@ -15,6 +15,7 @@ $(
                         },
                         success : function(e){
                             alert('saved!');
+                            location.href = app_root+'/tag';
                         },
                         error : function(e){
                             alert('error');

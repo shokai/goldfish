@@ -23,8 +23,9 @@ post '/tag/:hex_id.json' do
   @url = params[:url]
   @title = params[:title].toutf8
 
-  NfcTag.valid?(@id) or throw(:halt, [400, {:error => 'invalid tag'}.to_json])
   @url =~ /^https?:\/\/.+/ or throw(:halt, [400, {:error => 'invalid URL'}.to_json])
+  @url =~ /^#{app_root}\/tag\// and throw(:halt, [400, {:error => 'invalid URL'}.to_json])
+  NfcTag.valid?(@id) or throw(:halt, [400, {:error => 'invalid tag'}.to_json])
 
   begin
     @tag = NfcTag.where(:hex_id => @id).first

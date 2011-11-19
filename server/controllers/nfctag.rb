@@ -4,7 +4,7 @@ before '*.json' do
 end
 
 get '/tag' do
-  @tags = NfcTag.all
+  @tags = NfcTag.all.asc(:hex_id)
   haml :nfctag_index
 end
 
@@ -41,6 +41,25 @@ post '/tag/:hex_id.json' do
     STDERR.puts e
     status 500
     @mes = {:error => 'internal server error'}.to_json
+  end
+end
+
+delete '/tag/:hex_id.json' do
+  @id = params[:hex_id].downcase
+  @tag = NfcTag.where(:hex_id => @id).first
+  unless @tag
+    status 404
+    @mes = {:error => 'tag not found'}.to_json
+  else
+    begin
+      @tag.delete
+      status 200
+      @mes = @tag.to_hash.to_json
+    rescue => e
+      STDERR.puts e
+      status 500
+      @mes = {:error => 'delete error'}.to_json
+    end
   end
 end
 

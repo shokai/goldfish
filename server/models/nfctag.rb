@@ -7,7 +7,7 @@ class NfcTag
   field :description, :type => String, :default => ''
   def to_hash
     {
-      :hex_id => hex_id,
+      :id => hex_id,
       :url => url,
       :title => title,
       :description => description

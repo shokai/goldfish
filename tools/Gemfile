@@ -1,4 +1,0 @@
-source :rubygems
-gem 'eventmachine'
-gem 'ArgsParser'
-gem 'eventmachine_httpserver'

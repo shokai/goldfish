@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 require 'rubygems'
-require 'bundler/setup'
 require 'eventmachine'
 require 'ArgsParser'
 
@@ -41,7 +40,7 @@ end
 
 EM::run do
   EM::start_server('0.0.0.0', params[:port].to_i, EchoServer)
-  puts "server start - port #{params[:port].to_i}"
+  puts "chat server start - TCP port:#{params[:port].to_i}"
   EM::defer do
     loop do
       line = gets.strip

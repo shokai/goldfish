@@ -53,7 +53,7 @@ class Receiver < EM::Connection
 end
 
 EM::run do
-  puts "server start - port:#{params[:port].to_i}"
+  puts "mouse server start - UDP port:#{params[:port].to_i}"
   EM::open_datagram_socket('0.0.0.0', params[:port].to_i, Receiver)
   EM::defer do
     loop do

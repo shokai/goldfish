@@ -9,6 +9,14 @@
     %script{:type => 'application/javascript', :src => "#{app_root}/js/sample.js"}
   %body
     %h1= "#{@title} sample"
+    %h2 Info
+    %ul#info
+      %li.id
+        %span.label goldfish.id
+        %span :
+        %span.value --
+        %span
+          %input{:type => :button, :id => 'btn_reset_id', :value => 'reset'}
     %h2 Sensors
     %h3 Accelerometer
     %ul#accelerometer

@@ -8,6 +8,8 @@ var log = function(msg){
 $(function(){
       log("start - tag:"+goldfish.tag());
       log("app_name:"+goldfish.app_name());
+      log("id:"+goldfish.id());
+      $('#info .id .value').html(goldfish.id());
       setInterval(
           function(){
               var acc = goldfish.accelerometer();
@@ -29,6 +31,14 @@ $(function(){
               var light = goldfish.light();
               $('#light .value').html(light);
           }, 50
+      );
+
+      $('#btn_reset_id').click(
+          function(){
+              var id = goldfish.id_reset();
+              log('id reset:'+id);
+              $('#info .id .value').html(id);
+          }
       );
   }
  );

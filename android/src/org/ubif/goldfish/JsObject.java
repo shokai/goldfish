@@ -2,7 +2,12 @@ package org.ubif.goldfish;
 
 import org.shokai.evmsg.*;
 import java.net.URLEncoder;
+import java.util.Date;
+
 import org.json.JSONObject;
+
+import android.content.SharedPreferences;
+import android.provider.Settings;
 
 public class JsObject {
     private AppActivity activity;
@@ -176,6 +181,23 @@ public class JsObject {
     public String tag(){
         if(!this.activity.getClass().getName().equals("org.ubif.goldfish.TagActivity")) return null;
         return ((TagActivity)activity).getTagId();
+    }
+    
+    public String id(){
+        SharedPreferences pref = activity.getPreferences(activity.MODE_PRIVATE);
+        String id = pref.getString("goldfish.id", "");
+        if(id.length() < 1){
+            String android_id = Settings.Secure.getString(activity.getContentResolver(), Settings.System.ANDROID_ID);
+            long now = (long)(new Date().getTime()/1000);
+            id = MD5.hexdigit(android_id+"_"+now);
+            pref.edit().putString("goldfish.id", id).commit();
+        }
+        return id;
+    }
+    
+    public String id_reset(){
+        activity.getPreferences(activity.MODE_PRIVATE).edit().putString("goldfish.id", "").commit();
+        return id();
     }
 
     protected void stop(){

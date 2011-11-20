@@ -40,5 +40,12 @@ $(function(){
               $('#info .id .value').html(id);
           }
       );
+
+      $('#btn_exit').click(
+          function(){
+              alert('bye');
+              goldfish.exit();
+          }
+      );
   }
  );

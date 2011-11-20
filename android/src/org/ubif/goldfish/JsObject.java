@@ -210,4 +210,9 @@ public class JsObject {
             this.udp = null;
         }
     }
+    
+    public void exit(){
+        this.stop();
+        activity.finish();
+    }
 }

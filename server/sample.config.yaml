@@ -5,3 +5,5 @@ mongo_dbname : 'goldfish'
 
 chat_port : 8082
 mouse_port : 8083
+
+default_redirect_url : 'http://ubif.org/poi/app'

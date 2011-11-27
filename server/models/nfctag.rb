@@ -2,7 +2,7 @@
 class NfcTag
   include Mongoid::Document
   field :hex_id, :type => String, :default => ''
-  field :url, :type => String, :default => ''
+  field :url, :type => String, :default => @@conf['default_redirect_url']
   field :title, :type => String, :default => ''
   def to_hash
     {

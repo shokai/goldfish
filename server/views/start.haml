@@ -1,0 +1,19 @@
+!!! XHTML
+%html
+  %head
+    %title= "start - #{@title}"
+  %body
+    %a{:href => app_root}= @title
+    %h1 Start
+    %h1 Real-world Copy Paste
+    %iframe{:width => 640, :height => 360, :src => "http://www.youtube.com/embed/Ncacg1auokA", :frameborder => 0}
+    %h2 Install Chrome Extension
+    %a{:href => 'https://chrome.google.com/webstore/detail/ngdkgechdlodjiojaanaaedloioaljkp?hl=ja&gl=JP'}
+      chrome web store
+    %h1 Make your App
+    %a{:href => "#{app_root}/tag"}Regist your app
+    with your NFC-TAG    
+    %hr
+    %h2 source code
+    - url = 'https://github.com/shokai/goldfish'
+    %a{:href => url}= url

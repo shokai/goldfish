@@ -8,8 +8,6 @@ require 'yaml'
 require 'json'
 require 'kconv'
 
-set :haml, :escape_html => true
-
 begin
   @@conf = YAML::load open(File.dirname(__FILE__)+'/config.yaml').read
   p @@conf
@@ -19,6 +17,12 @@ rescue => e
   exit 1
 end
 
+Mongoid.configure do |conf|
+  host = @@conf['mongo']['host']
+  port = @@conf['mongo']['port']
+  conf.master = Mongo::Connection.new.db(@@conf['mongo']['database'])
+end
+
 [:helpers, :models ,:controllers].each do |dir|
   Dir.glob(File.dirname(__FILE__)+"/#{dir}/*.rb").each do |rb|
     puts "loading #{rb}"
@@ -26,8 +30,4 @@ end
   end
 end
 
-
-Mongoid.configure{|conf|
-  conf.master = Mongo::Connection.new(@@conf['mongo_server'], @@conf['mongo_port']).db(@@conf['mongo_dbname'])
-}
-
+set :haml, :escape_html => true

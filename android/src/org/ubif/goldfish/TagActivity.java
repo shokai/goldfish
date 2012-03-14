@@ -87,7 +87,7 @@ public class TagActivity extends AppActivity {
                 this.tag_id = intent.getExtras().getString("tag_id");
             }
             notify("TAG:" + tag_id);
-            this.webView.loadUrl(base_url + tag_id);
+            this.webView.loadUrl(base_url +"/tag/" + tag_id);
         }
         catch (Exception e) {
             e.printStackTrace();

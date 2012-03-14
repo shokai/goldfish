@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">goldfish</string>
-    <string name="base_url">http://ubif.org/goldfish/tag/</string>
+    <string name="base_url">http://ubif.org/goldfish</string>
 </resources>

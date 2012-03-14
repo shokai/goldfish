@@ -1,51 +1,50 @@
-!!!XHTML
 - @width = 320
-%html
-  %head
-    %title= "#{@title} - #{@tag}"
-    :javascript
-      var tag = "#{@tag}";
-      var host = "#{@host}";
-      var port = #{@port};
-    :css
-      div.button{
-        background-color : #999;
-        border-radius : 10px;
-        text-align : center;
-        margin : 1px;
-      }
-      div.button_locked{
-        background-color : #444;
-      }
-      div#touch {
-        width : #{@width*0.9}px;
-        height : #{@width*0.7}px;
-      }
-      div#btn_center {
-        height : 50px;
-        width : #{@width*0.9}px;
-      }
-      div#lr{
-        text-align : center;
-      }
-      div#lr div.button{
-        float : left;
-        height : 100px;
-        width : #{@width*0.45}px;
-      }
-      div.clear {
-        clear : both;
-      }
-    %script{:type => 'application/javascript', :src => "#{app_root}/js/jquery.js"}
-    %script{:type => 'application/javascript', :src => "#{app_root}/js/util.js"}
-    %script{:type => 'application/javascript', :src => "#{app_root}/js/samples/udp_touchpad.js"}
-  %body
-    %h1 TouchPad
-    %div#touch.button
-    %div#ctrls
-      %div#lr
-        %div#btn_left.button
-        %div#btn_right.button
-      %div.clear
-      %div#btn_center.button
+
+- content_for :head do
+  :javascript
+    var tag = "#{@tag}";
+    var host = "#{@host}";
+    var port = #{@port};
+  :css
+    div.button{
+      background-color : #999;
+      border-radius : 10px;
+      text-align : center;
+      margin : 1px;
+    }
+    div.button_locked{
+      background-color : #444;
+    }
+    div#touch {
+      width : #{@width*0.9}px;
+      height : #{@width*0.7}px;
+    }
+    div#btn_center {
+      height : 50px;
+      width : #{@width*0.9}px;
+    }
+    div#lr{
+      text-align : center;
+    }
+    div#lr div.button{
+      float : left;
+      height : 100px;
+      width : #{@width*0.45}px;
+    }
+    div.clear {
+      clear : both;
+    }
+  %script{:type => 'application/javascript', :src => "#{app_root}/js/util.js"}
+  %script{:type => 'application/javascript', :src => "#{app_root}/js/samples/udp_touchpad.js"}
+
+- content_for :header do
+  %h1 TouchPad
+
+%div#touch.button
+%div#ctrls
+  %div#lr
+    %div#btn_left.button
+    %div#btn_right.button
+  %div.clear
+  %div#btn_center.button
 

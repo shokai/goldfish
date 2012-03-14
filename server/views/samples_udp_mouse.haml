@@ -1,52 +1,50 @@
-!!!XHTML
 - @width = 320
-%html
-  %head
-    %title= "#{@title} - #{@tag}"
-    :javascript
-      var tag = "#{@tag}";
-      var host = "#{@host}";
-      var port = #{@port};
-    - btn_width = (@width/2.5).to_i
-    :css
 
-      div.button {
-        background-color : #AAFFAA;
-        text-align : center;
-        margin : 5px;
-      }
-      div#btn_center {
-        height : 50px;
-        width : #{(btn_width+5)*2}px;
-      }
-      div#lr{
-        text-align : center;
-      }
-      div#lr div.button{
-        float : left;
-        height : 100px;
-        width : #{(@width/2.5).to_i}px;
-      }
-      div.clear {
-        clear : both;
-      }
-    %script{:type => 'application/javascript', :src => "#{app_root}/js/jquery.js"}
-    %script{:type => 'application/javascript', :src => "#{app_root}/js/util.js"}
-    %script{:type => 'application/javascript', :src => "#{app_root}/js/samples/udp_mouse.js"}
-  %body
-    %h1 Mouse (UDP Sample)
-    %div#mouse
-      %div#x
-        %span x
-        %span.value 0
-      %div#y
-        %span y
-        %span.value 0
-    %div#ctrls
-      %div#btn_center.button
-      %div#lr
-        %div#btn_left.button
-        %div#btn_right.button
-    %div.clear
-    %h2 Log
-    %ul#log
+- content_for :head do
+  :javascript
+    var tag = "#{@tag}";
+    var host = "#{@host}";
+    var port = #{@port};
+  - btn_width = (@width/2.5).to_i
+  :css
+    div.button {
+      background-color : #AAFFAA;
+      text-align : center;
+      margin : 5px;
+    }
+    div#btn_center {
+      height : 50px;
+      width : #{(btn_width+5)*2}px;
+    }
+    div#lr{
+      text-align : center;
+    }
+    div#lr div.button{
+      float : left;
+      height : 100px;
+      width : #{(@width/2.5).to_i}px;
+    }
+    div.clear {
+      clear : both;
+    }
+  %script{:type => 'application/javascript', :src => "#{app_root}/js/util.js"}
+  %script{:type => 'application/javascript', :src => "#{app_root}/js/samples/udp_mouse.js"}
+
+- content_for :header do
+  %h1 Mouse (UDP Sample)
+
+%div#mouse
+  %div#x
+    %span x
+    %span.value 0
+  %div#y
+    %span y
+    %span.value 0
+%div#ctrls
+  %div#btn_center.button
+  %div#lr
+    %div#btn_left.button
+    %div#btn_right.button
+%div.clear
+%h2 Log
+%ul#log

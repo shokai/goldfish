@@ -44,7 +44,7 @@ public class TagActivity extends AppActivity {
                 bar.setProgress(count);
                 if(count >= 100) progBarWrapper.setVisibility(View.GONE);
                 else progBarWrapper.setVisibility(View.VISIBLE);
-            }            
+            }
         });
         webView.setWebViewClient(new WebViewClient() {
             @Override

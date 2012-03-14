@@ -1,8 +1,9 @@
 source 'http://rubygems.org'
 
 gem 'rack'
-gem 'sinatra'
 gem 'thin'
+gem 'sinatra'
+gem 'sinatra-content-for'
 gem 'sinatra-reloader'
 gem 'bson'
 gem 'bson_ext'

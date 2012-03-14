@@ -1,87 +1,85 @@
-!!!XHTML
-%html
-  %head
-    %title= "#{@title} - sample"
-    :javascript
-      var tag = "#{@tag}";
-    %script{:type => 'application/javascript', :src => "#{app_root}/js/jquery.js"}
-    %script{:type => 'application/javascript', :src => "#{app_root}/js/goldfish.js"}
-    %script{:type => 'application/javascript', :src => "#{app_root}/js/sample.js"}
-  %body
-    %h1= "#{@title} sample"
-    %h2 Info
-    %ul#info
-      %li.id
-        %span.label goldfish.id
-        %span :
-        %span.value --
-        %span
-          %input{:type => :button, :id => 'btn_reset_id', :value => 'reset'}
-      %li.exit
-        %span
-          %input{:type => :button, :id => 'btn_exit', :value => 'exit app'}
-    %h2 Sensors
-    %h3 Accelerometer
-    %ul#accelerometer
-      %li.x
-        %span.label x
-        %span :
-        %span.value --
-      %li.y
-        %span.label y
-        %span :
-        %span.value --
-      %li.z
-        %span.label z
-        %span :
-        %span.value --
-    %h3 Gyroscope
-    %ul#gyroscope
-      %li.x
-        %span.label x
-        %span :
-        %span.value --
-      %li.y
-        %span.label y
-        %span :
-        %span.value --
-      %li.z
-        %span.label z
-        %span :
-        %span.value --
-    %h3 Magnetic Field
-    %ul#magnet
-      %li.x
-        %span.label x
-        %span :
-        %span.value --
-      %li.y
-        %span.label y
-        %span :
-        %span.value --
-      %li.z
-        %span.label z
-        %span :
-        %span.value --
-    %h3 Orientation
-    %ul#orientation
-      %li.azimush
-        %span.label azimush
-        %span :
-        %span.value --
-      %li.pitch
-        %span.label pitch
-        %span :
-        %span.value --
-      %li.roll
-        %span.label roll
-        %span :
-        %span.value --
-    %h3 Light
-    %ul#light
-      %li
-        %span.label value
-        %span :
-        %span.value --
-    %h2 Log
-    %ul#log
+- content_for :head do
+  :javascript
+    var tag = "#{@tag}";
+  %script{:type => 'application/javascript', :src => "#{app_root}/js/sample.js"}
+
+
+- content_for :header do
+  %h1= @title
+
+%h2 Info
+%ul#info
+  %li.id
+    %span.label goldfish.id
+    %span :
+    %span.value --
+    %span
+      %input{:type => :button, :id => 'btn_reset_id', :value => 'reset'}
+  %li.exit
+    %span
+      %input{:type => :button, :id => 'btn_exit', :value => 'exit app'}
+%h2 Sensors
+%h3 Accelerometer
+%ul#accelerometer
+  %li.x
+    %span.label x
+    %span :
+    %span.value --
+  %li.y
+    %span.label y
+    %span :
+    %span.value --
+  %li.z
+    %span.label z
+    %span :
+    %span.value --
+%h3 Gyroscope
+%ul#gyroscope
+  %li.x
+    %span.label x
+    %span :
+    %span.value --
+  %li.y
+    %span.label y
+    %span :
+    %span.value --
+  %li.z
+    %span.label z
+    %span :
+    %span.value --
+%h3 Magnetic Field
+%ul#magnet
+  %li.x
+    %span.label x
+    %span :
+    %span.value --
+  %li.y
+    %span.label y
+    %span :
+    %span.value --
+  %li.z
+    %span.label z
+    %span :
+    %span.value --
+%h3 Orientation
+%ul#orientation
+  %li.azimush
+    %span.label azimush
+    %span :
+    %span.value --
+  %li.pitch
+    %span.label pitch
+    %span :
+    %span.value --
+  %li.roll
+    %span.label roll
+    %span :
+    %span.value --
+%h3 Light
+%ul#light
+  %li
+    %span.label value
+    %span :
+    %span.value --
+%h2 Log
+%ul#log

@@ -13,3 +13,4 @@ package
 build.xml
 local.properties
 *#*
+.sass-cache

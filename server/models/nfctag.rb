@@ -12,7 +12,11 @@ class NfcTag
     }
   end
 
-  def NfcTag.valid?(tag)
-    tag =~ /^[a-z\d]+$/
+  def self.valid?(tag)
+    tag =~ /^[a-z\d]+$/i
+  end
+
+  def self.find_by_hex_id(hex_id)
+    NfcTag.where(:hex_id => hex_id.downcase).first
   end
 end

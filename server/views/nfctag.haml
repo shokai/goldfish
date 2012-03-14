@@ -1,25 +1,23 @@
-!!! XHTML
-%html
-  %head
-    %title= "#{@title} - tag:#{@id}"
-    :javascript
-      var app_root = "#{app_root}";
-      var tag = "#{@id}";
-    %script{:type => 'application/javascript', :src => "#{app_root}/js/jquery.js"}
-    %script{:type => 'application/javascript', :src => "#{app_root}/js/nfctag.js"}
-  %body
-    %a{:href => "#{app_root}/tag"}= "#{@title}/tag"
-    %h1= "tag:#{@id}"
-    %ul
-      %li 
-        %span.name URL
-        %span.separate : 
-        %input{:type => :text, :id => :url, :value => @tag.url, :size => 80}
-        %input{:type => :button, :value => 'go', :onClick => "location.href='#{@tag.url}'"}
-      %li
-        %span.name Title
-        %span.separate : 
-        %input{:type => :text, :id => :title, :value => @tag.title, :size => 80}
-    %div.ctrls
-      %input{:type => :button, :value => 'save', :id => :btn_save}
-      %input{:type => :button, :value => 'delete', :id => :btn_delete}
+- content_for :head do
+  :javascript
+    var app_root = "#{app_root}";
+    var tag = "#{@id}";
+  %script{:type => 'application/javascript', :src => "#{app_root}/js/nfctag.js"}
+
+- content_for :header do
+  %a{:href => "#{app_root}/tag"}= "#{@title}/tag"
+  %h1= "tag:#{@id}"
+
+%ul
+  %li 
+    %span.name URL
+    %span.separate : 
+    %input{:type => :text, :id => :url, :value => @tag.url, :size => 80}
+    %input{:type => :button, :value => 'go', :onClick => "location.href='#{@tag.url}'"}
+  %li
+    %span.name Title
+    %span.separate : 
+    %input{:type => :text, :id => :title, :value => @tag.title, :size => 80}
+%div.ctrls
+  %input{:type => :button, :value => 'save', :id => :btn_save}
+    %input{:type => :button, :value => 'delete', :id => :btn_delete}

@@ -4,15 +4,16 @@ before '*.json' do
 end
 
 get '/tag' do
+  @title = "#{@title}/tag"
   @tags = NfcTag.all.asc(:hex_id)
   haml :nfctag_index
 end
 
 get '/tag/:hex_id.json' do
-  @id = params[:hex_id].downcase
+  @id = params[:hex_id]
   NfcTag.valid?(@id) or throw(:halt, [400, {:error => 'invalid tag'}.to_json])
 
-  @tag = NfcTag.where(:hex_id => @id).first
+  @tag = NfcTag.find_by_hex_id @id
   @tag or throw(:halt, [404, {:error => 'tag not found'}.to_json])
 
   @tag.to_hash.to_json

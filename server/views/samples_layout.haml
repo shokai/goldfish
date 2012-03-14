@@ -1,0 +1,16 @@
+!!! XHTML
+%html
+  %head
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html', :charset => 'UTF-8'}
+    %title= @title
+    %link{:rel => 'stylesheet', :href => "#{app_root}/main.css", :type => 'text/css'}
+    %script{:type => 'text/javascript', :src => "#{app_root}/js/jquery.js"}
+    %script{:type => 'application/javascript', :src => "#{app_root}/js/goldfish.js"}
+    != yield_content :head
+  %body
+    %div#content
+      %div#header
+        != yield_content :header
+      %div#main
+        != yield
+      %hr

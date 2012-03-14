@@ -1,26 +1,25 @@
-!!!XHTML
 - @width = 320
-%html
-  %head
-    %title= "#{@title} - #{@tag}"
-    :javascript
-      var tag = "#{@tag}";
-      var host = "#{@host}";
-      var port = #{@port};
-    %script{:type => 'application/javascript', :src => "#{app_root}/js/jquery.js"}
-    %script{:type => 'application/javascript', :src => "#{app_root}/js/util.js"}
-    %script{:type => 'application/javascript', :src => "#{app_root}/js/goldfish.js"}
-    %script{:type => 'application/javascript', :src => "#{app_root}/js/samples/tcp_chat.js"}
-  %body
-    %h1 TCP Chat
-    %div#msg
-      %div
-        %span name : 
-        %input{:type => :text, :id => 'name', :size => 10, :value => 'user0'}
-      %div
-        %span message : 
-        %input{:type => :text, :id => 'msg', :size => 30, :value => 'hello'}
-      %div
-        %input{:type => :button, :id => 'btn_send', :value => 'send'}
-    %h2 Log
-    %ul#log
+
+- content_for :head do
+  :javascript
+    var tag = "#{@tag}";
+    var host = "#{@host}";
+    var port = #{@port};
+  %script{:type => 'application/javascript', :src => "#{app_root}/js/util.js"}
+  %script{:type => 'application/javascript', :src => "#{app_root}/js/samples/tcp_chat.js"}
+
+
+- content_for :header do
+  %h1 TCP Chat
+
+%div#msg
+  %div
+    %span name : 
+    %input{:type => :text, :id => 'name', :size => 10, :value => 'user0'}
+  %div
+    %span message : 
+    %input{:type => :text, :id => 'msg', :size => 30, :value => 'hello'}
+  %div
+    %input{:type => :button, :id => 'btn_send', :value => 'send'}
+%h2 Log
+%ul#log

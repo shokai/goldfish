@@ -1,21 +1,18 @@
-!!!XHTML
 - @width = 320
-%html
-  %head
-    %title= "#{@title} - samples/orientation"
-    :javascript
-      var tag = "#{@tag}";
-    :css
-      body {
-        margin : 0px;
-        padding : 0px;
-        width : #{@width}px;
-      }
-    %script{:type => 'application/javascript', :src => "#{app_root}/js/jquery.js"}
-    %script{:type => 'application/javascript', :src => "#{app_root}/js/goldfish.js"}
-    %script{:type => 'application/javascript', :src => "#{app_root}/js/samples/orientation.js"}
-    %meta{:content => "width=#{@width}px, user-scalable=no", :name => :viewport}
-  %body
-    %canvas{:id => :main, :width => @width, :height => 300}
-    %h2 Log
-    %ul#log
+
+- content_for :head do
+  %title= "#{@title} - samples/orientation"
+  :javascript
+    var tag = "#{@tag}";
+  :css
+    body {
+      margin : 0px;
+      padding : 0px;
+      width : #{@width}px;
+    }
+  %script{:type => 'application/javascript', :src => "#{app_root}/js/samples/orientation.js"}
+  %meta{:content => "width=#{@width}px, user-scalable=no", :name => :viewport}
+
+%canvas{:id => :main, :width => @width, :height => 300}
+%h2 Log
+%ul#log

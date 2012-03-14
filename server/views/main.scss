@@ -1,0 +1,19 @@
+
+$font_black : rgb(20,20,20);
+
+@mixin content {
+  div {
+    margin : 10px;
+    font-size : 95%;
+  }
+}
+
+h1, h2, h3, h4, h5{
+  color : rgb(100, 20, 20);
+}
+
+body {
+  @include content;
+  background-color : rgb(220,220,220);
+  color : $font_black;
+}

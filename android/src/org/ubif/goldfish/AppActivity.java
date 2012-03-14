@@ -1,12 +1,17 @@
 package org.ubif.goldfish;
 
 import android.app.Activity;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
 import android.webkit.WebView;
 
 public class AppActivity extends Activity{
     protected WebView webView;
+    private String base_url;
+
+    public String getBaseUrl(){
+        if(this.base_url != null) return this.base_url;
+        return this.base_url = this.getResources().getString(R.string.base_url);
+    }
 
     public void loadUrl(String url){
         webView.loadUrl(url);
@@ -15,28 +20,13 @@ public class AppActivity extends Activity{
     public void addJavascriptInterface(JsObject jsObj){
         if(webView!=null) webView.addJavascriptInterface(jsObj, jsObj.getPath());
     }
-
-    private static class MenuId{
-        private static final int RELOAD = 1;
-        private static final int HELP = 2;
+    
+    void trace(Object msg) {
+        Log.v(this.getResources().getString(R.string.app_name), msg.toString());
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        boolean supRetVal = super.onCreateOptionsMenu(menu);
-        menu.add(0, MenuId.RELOAD, 0, "RELOAD");
-        return supRetVal;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case MenuId.RELOAD:
-                webView.clearCache(true);
-                webView.loadUrl(webView.getUrl());
-                return true;
-            case MenuId.HELP:
-                return true;
-        }
-        return false;
+    void notify(Object msg) {
+        this.setTitle(this.getResources().getString(R.string.app_name)+" - "+msg.toString());
+        trace(msg);
     }
 }

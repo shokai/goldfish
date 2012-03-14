@@ -54,7 +54,6 @@ public class TagActivity extends AppActivity {
                 return true;
             }
         });
-        webView.clearCache(true);
         webView.getSettings().setJavaScriptEnabled(true);
         this.jsObj = new JsObject(this, "goldfish");
         this.addJavascriptInterface(jsObj);

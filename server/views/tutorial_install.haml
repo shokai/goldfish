@@ -1,0 +1,19 @@
+- content_for :header do
+  %a{:href => app_root} top
+  |
+  %a{:href => "#{app_root}/start"} back
+  %h1 GoldFishのインストール
+
+%h2 Androidアプリ
+%div
+  %p
+    %a{:href => 'https://play.google.com/store/apps/details?id=org.ubif.goldfish'}
+      Android Market
+    からインストールできます。Nexus SおよびNexus Primeでの動作を確認しています。
+
+%h2 使用できるNFCタグ
+%div
+  %p
+    Mifare NFCタグ以外にも、SuicaやPasmo、あるいは一部の大学の学生証やカードキー、社員証などで動作します。
+  %p
+    GoldFishをインストールしたAndroid端末でタグに接触し、IDが読み取れれば使用できます。

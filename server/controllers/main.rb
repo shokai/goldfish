@@ -15,3 +15,9 @@ get '/about' do
   @title = "#{@title}とは"
   haml :about
 end
+
+get '/tutorial/:name' do
+  @name = params[:name]
+  @title = "#{@title} チュートリアル"
+  haml "tutorial_#{@name}".to_sym
+end

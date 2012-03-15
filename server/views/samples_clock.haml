@@ -1,0 +1,25 @@
+- @width = 320
+
+!!! XHTML
+%html
+  %head
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html', :charset => 'UTF-8'}
+    %title= @title
+    %script{:type => 'text/javascript', :src => "#{app_root}/js/jquery.js"}
+    :javascript
+      $(function(){
+        setInterval(function(){
+          $('div#clock').html(new Date().toString());
+        }, 1000);
+      });
+    :css
+      body {
+        margin : 0px;
+        padding : 0px;
+        width : #{@width}px;
+        height : 100%;
+      }
+    %meta{:content => "width=#{@width}px, user-scalable=no", :name => :viewport}
+  %body
+    %h1= @title
+    %div#clock

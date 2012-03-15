@@ -1,15 +1,26 @@
 - content_for :header do
   %h1= @title
 
-%h2 About GoldFish
-%a{:href => "#{app_root}/about"} About GoldFish
-%h2 Install Android App
-%a{:href => "https://play.google.com/store/apps/details?id=org.ubif.goldfish"} Android Market
-%h2 Start
-%a{:href => "#{app_root}/start"} start goldfish
-%h2 tags
-%a{:href => "#{app_root}/tag"} view tags
-%h2 samples
+%h2 はじめに
+%ul
+  %li
+    %a{:href => "#{app_root}/about"} GoldFishとは
+  %li
+    %a{:href => "#{app_root}/start"} GoldFishでアプリを作る
+
+%h2 インストール
+%ul
+  %li
+    %a{:href => "#{app_root}/tutorial/install"} GoldFishのインストールと、使用できるNFCタグ
+  %li
+    %a{:href => "https://play.google.com/store/apps/details?id=org.ubif.goldfish"}
+      Android Market
+
+%h2 アプリの登録
+%ul
+  %li
+    %a{:href => "#{app_root}/tag"} NFCタグにアプリを登録
+%h2 サンプルプログラム
 %ul
   %li
     %a{:href => app_root+'/sample'} sensor value

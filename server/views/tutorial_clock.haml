@@ -1,0 +1,74 @@
+- clock_app = "#{app_root}/samples/clock"
+
+- content_for :header do
+  %a{:href => app_root } top
+  |
+  %a{:href => "#{app_root}/start"} back
+  %h1 GoldFishで簡単なアプリを作って、Androidで動かしてみよう
+
+%h2 時計アプリ
+%div
+  %p
+    GoldFishのアプリケーションはHTMLとJavaScirptで実装できます。
+  %p
+    簡単なアプリの例として、
+    %a{:href => clock_app} 1秒毎にJavaScriptで時刻を表示するWebページ
+    を作成しました。ごく普通のWebページですが、これをGoldFish上のアプリケーションとして、Android端末でNFCタグにタッチする事で起動させる事ができます。
+  %p
+    %img{:src => "#{app_root}/img/clock_screenshot.png"}
+
+%h2 時計アプリの実装
+%div
+  %p
+    %a{:href => clock_app}= clock_app
+    のソースコードです。
+    スマートフォン用にViewPortタグを使って画面サイズを指定している事以外は、ごく普通のJavaScriptを使ったWebページです。
+  %p
+    %a{:href => 'http://jquery.com/'} jQuery
+    を使ってHTMLを書き換える処理を、setIntervalで1秒ごとに実行しています。
+  %p
+    %script{:src => "https://gist.github.com/2042589.js?file=samples_clock.html"}
+
+%h2 時計アプリをNFCタグに登録する
+%div
+  %p
+    GoldFishは、あらかじめWebページのURLをNFCタグのID（a-zのローマ字と0-9の数字で構成されます）に関連付けておく事で、アプリケーションを起動します。
+  %p
+    アプリの登録は
+    %a{:href => "#{app_root}/tag"} NFCタグ登録ページ
+    で行えます。
+    今回は試しに、「自分の名前をローマ字で」登録してみましょう。
+
+%h2 時計アプリをAndroidで動かす
+%div
+  %p
+    GoldFishのアプリを、Androidのアプリのアイコンから起動します。
+  %p
+    %img{:src => "#{app_root}/img/launch_app.jpg"}
+  %p
+    アプリを起動すると、画面上部にタグを入力するテキストエリアがあります。先ほどNFCタグ登録ページで登録したIDと同じものを入力しましょう。
+  %p
+    %img{:src => "#{app_root}/img/launch_tag.jpg"}
+  %p
+    アプリが起動します。
+  %p
+    %img{:src => "#{app_root}/img/samples_clock.jpg"}
+
+
+%h2 NFCタグから時計アプリを起動する
+%div
+  %p
+    最後に、自分の持っているNFCタグから時計アプリを起動させるように設定してみましょう。
+  %p
+    %img{:src => "#{app_root}/img/mifare_tag.jpg"}
+  %p
+    上はMifare NFCタグです。この様にIDが印字してある物もありますが、GoldFishをインストールしたAndroidをタグに接触させるとIDを読み取り、画面上部に表示できます。
+  %p
+    %img{:src => "#{app_root}/img/tag_id.jpg"}
+  %p
+    先程はテストの為に、
+    %a{:href => "#{app_root}/tag"}
+      NFCタグ登録ページ
+    に「自分の名前」とIDを関連付けしましたが、今度はこのIDで登録しなおしてみましょう。
+  %p
+    登録してからAndroidでタッチすると、時計が起動します。

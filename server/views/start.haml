@@ -1,14 +1,27 @@
 - content_for :header do
-  %h1= @title
+  %a{:href => app_root} top
+  %h1 GoldFishをはじめる
+  %div
+    GoldFishでアプリケーションを開発する手順を説明します
 
-%a{:href => app_root}= @title
-%h1 Start
-%h1 Real-world Copy Paste
-%iframe{:width => 640, :height => 360, :src => "http://www.youtube.com/embed/Ncacg1auokA", :frameborder => 0}
-%h2 Install Chrome Extension
-%a{:href => 'https://chrome.google.com/webstore/detail/ngdkgechdlodjiojaanaaedloioaljkp?hl=ja&gl=JP'}
-chrome web store
-%h1 Make your App
-%a{:href => "#{app_root}/tag"} Regist your app with your NFC-TAG
-%hr
 
+%h2 チュートリアル
+%ol
+  %li
+    %a{:href => "#{app_root}/tutorial/install"} インストール
+  %li
+    %a{:href => "#{app_root}/tutorial/clock"} 簡単なアプリを作って、Androidで動かしてみよう
+  -# %li
+  -#  %a{:href => "#{app_root}/tutorial/sensor"} Androidの内蔵センサーを使ったアプリを作る
+
+%h2 APIリファレンス
+%ol
+  -#%li
+  -#  %a{:href => "#{app_root}/api/accelerometor"} 加速度センサ
+
+%h2 アプリケーション例
+%ul
+  %li 物品の詳細を調べる
+  %li 研究室のドアを開ける
+  %li 実世界コピペ
+    

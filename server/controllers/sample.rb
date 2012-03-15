@@ -34,3 +34,9 @@ get '/samples/udp_touchpad' do
   @tag = 'samples/udp_touchpad'
   haml :samples_udp_touchpad, :layout => :samples_layout
 end
+
+get '/samples/:name' do
+  @name = params[:name]
+  @title = "#{@title} - #{@name}"
+  haml "samples_#{@name}".to_sym, :layout => false
+end

@@ -2,13 +2,20 @@
   %a{:href => app_root} top
   %h1= @title
 
+%h2 GoldFish Webサイト
+%div
+  %a{:href => app_root}= app_root
+
+
 %h2 JavaScriptベースの実世界GUIフレームワーク
 %div
   GoldFishは実世界GUIを実装するための環境です。
   AndroidをNFCタグに触れると、JavaScriptで実装されたAndroidアプリが起動します。
 
 %h2 実世界GUIアプリを作ろう
-%a{:href => "#{app_root}/start"} チュートリアル
+%div
+  %a{:href => "#{app_root}/start"} チュートリアル
+  へ
 
 %h2 ソースコード
 %div

@@ -70,6 +70,7 @@ public class TagActivity extends AppActivity {
     void resolveIntent(Intent intent) {
         String action = intent.getAction();
         trace(action);
+        String url = getBaseUrl();
         try {
             if (action.equals(NfcAdapter.ACTION_TAG_DISCOVERED)) {
                 Parcelable tag = intent
@@ -86,12 +87,12 @@ public class TagActivity extends AppActivity {
                 }
                 String id = sb.toString();
                 this.tag_id = id;
+                notify("TAG:" + tag_id);
+                url = getBaseUrl() + "/tag/" + tag_id;
             }
             else if (action.equals(Intent.ACTION_MAIN)) {
-                this.tag_id = intent.getExtras().getString("tag_id");
+                url = getBaseUrl() + "/jumptag";
             }
-            notify("TAG:" + tag_id);
-            String url = getBaseUrl() + "/tag/" + tag_id;
             trace("open " + url);
             this.webView.loadUrl(url);
         }

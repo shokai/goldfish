@@ -3,7 +3,7 @@ $font_black : rgb(20,20,20);
 
 @mixin content {
   div {
-    margin : 10px;
+    margin : 10px 10px 30px 10px;
     font-size : 95%;
   }
 }
@@ -12,8 +12,13 @@ h1, h2, h3, h4, h5{
   color : rgb(100, 20, 20);
 }
 
+html {
+  height : 100%;
+}
+
 body {
   @include content;
   background-color : rgb(220,220,220);
   color : $font_black;
+  height : 100%;
 }

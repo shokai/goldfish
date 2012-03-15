@@ -1,0 +1,32 @@
+- @width = 320
+
+- content_for :head do
+  %meta{:content => "width=#{@width}px, user-scalable=no", :name => :viewport}
+  :javascript
+    var app_root = "#{app_root}";
+    var tag = "#{@id}";
+    $(function(){
+      $('input#btn_go').click(function(){
+        location.href = app_root + '/tag/' + $('input#tag').val();
+      });
+    });
+  :css
+    body{
+      font-size : larger;
+    }
+    div#content{
+      text-align : center;
+    }
+
+- content_for :header do
+  %h1= "GoldFish"
+
+%div
+  %input{:type => :text, :id => 'tag', :size => 14, :value => 101}
+  %input{:type => :button, :id => 'btn_go', :value => 'Go!'}
+
+%div
+  %a{:href => "#{app_root}/about"} GoldFishとは
+
+%div
+  %a{:href => "#{app_root}/tag"} NFCタグの登録

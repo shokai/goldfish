@@ -16,6 +16,10 @@ get '/about' do
   haml :about
 end
 
+get '/jumptag' do
+  haml :jumptag
+end
+
 get '/tutorial/:name' do
   @name = params[:name]
   @title = "#{@title} チュートリアル"

@@ -14,3 +14,4 @@ build.xml
 local.properties
 *#*
 .sass-cache
+*.java.d

@@ -25,11 +25,11 @@ edit "config.yaml".
 Run
 ---
 
-    % ruby development.ru
+    % RACK_ENV=development
+    # or
+    % RACK_ENV=production
 
-open [http://localhost:8080](http://localhost:8080)
 
+    % bundle exec rackup config.ru -p 5000
 
-Deploy
-------
-use Passenger with "config.ru"
+open http://localhost:5000

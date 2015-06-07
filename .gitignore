@@ -15,3 +15,4 @@ local.properties
 *#*
 .sass-cache
 *.java.d
+*.ruby-version

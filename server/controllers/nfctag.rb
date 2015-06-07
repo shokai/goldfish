@@ -78,6 +78,6 @@ get '/tag/:hex_id' do
   @id = params[:hex_id].downcase
   NfcTag.valid?(@id) or throw(:halt, [400, 'invalid tag'])
   @tag = NfcTag.where(:hex_id => @id).first
-  redirect "/tag/#{@id}/edit" if !@tag or @tag.url.size < 1
+  redirect "#{app_root}/tag/#{@id}/edit" if !@tag or @tag.url.size < 1
   redirect @tag.url
 end

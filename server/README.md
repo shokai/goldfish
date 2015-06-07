@@ -6,7 +6,7 @@ Dependencies
 
 * Ruby 1.8.7
 * MongoDB 2.0+
-* Sinatra 1.3+
+* Sinatra 1.4+
 
 Install Dependencies
 --------------------

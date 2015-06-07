@@ -4,7 +4,6 @@
 db/*
 db*
 bin
-*.lock
 *.keystore
 *.pem
 .bundle
